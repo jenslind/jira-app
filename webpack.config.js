@@ -33,7 +33,8 @@ const config = {
     extensions: ['', '.scss', '.js', '.html'],
     modulesDirectories: ['src', 'node_modules']
   },
-  devtool: '#inline-source-map'
+  devtool: '#inline-source-map',
+  target: 'electron'
 };
 
 module.exports = config;
