@@ -5,6 +5,7 @@ import { RouteConfig, RouterOutlet, ROUTER_PROVIDERS, LocationStrategy, HashLoca
 import { bootstrap } from 'angular2/platform/browser'
 import { appRoutes } from './app.routes'
 import JiraService from './services/jira.service'
+import './scss/base/_base'
 
 @Component({
   selector: 'jira-app'

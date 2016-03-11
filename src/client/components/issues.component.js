@@ -1,5 +1,6 @@
 import { Component, View } from 'angular2/core'
 import JiraService from '../services/jira.service'
+import '../scss/modules/_issues'
 
 @Component({
   selector: 'issues'

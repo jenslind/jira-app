@@ -1,0 +1,27 @@
+.issues {
+  display: flex;
+  flex-direction: column;
+}
+
+.issues__item {
+  display: flex;
+  flex-direction: row;
+  background: #eee;
+  height: 40px;
+  padding: 20px;
+  border-bottom: 1px solid darken(#eee, 10%);
+  transition: background .1s;
+  cursor: pointer;
+
+  &:hover {
+    background: darken(#eee, 5%);
+  }
+}
+
+.issues__item__status {
+  width: 10px;
+  height: 10px;
+  border-radius: 100%;
+  background: green;
+  margin-right: 10px;
+}

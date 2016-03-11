@@ -1,0 +1,33 @@
+// General resets
+// Remove subpixels from webkit browsers and FF
+// Remove tap highlight color for webkit touch browsers.
+* {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  box-sizing: border-box;
+}
+
+// Set HTML to 62.5% to make it easier setting REM/EM values
+// Now it calculates from 10 instead of regular 16.
+// Example 1rem = 10px
+html {
+  font-size: 62.5%;
+  min-height: 100%;
+}
+
+// Remove subpixels from webkit browsers and FF
+// Remove webkit standard input, form, select & button styling on smartdevices
+input,
+form,
+select,
+button {
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+}
+
+// Remove standard border on button & input on smart devices
+button,
+[type=submit] {
+  border: 0;
+}
