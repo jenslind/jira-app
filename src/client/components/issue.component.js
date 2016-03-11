@@ -1,4 +1,5 @@
 import { Component, View } from 'angular2/core'
+import { RouteParams } from 'angular2/router'
 import JiraService from '../services/jira.service'
 
 @Component({
@@ -8,7 +9,14 @@ import JiraService from '../services/jira.service'
   template: require('../templates/issue.template')
 })
 export default class IssueComponent {
-  constructor(jira: JiraService) {
+  constructor(jira: JiraService, routeParams: RouteParams) {
     this.jira = jira
+    this.params = routeParams.params
+    this.issue = {}
+  }
+
+  ngOnInit() {
+    this.jira.issue$.subscribe(issue => this.issue = issue)
+    this.jira.getIssue(this.params.issueId)
   }
 }

@@ -7,7 +7,7 @@ export default class JiraService {
     this.issues = new Subject()
     this.issue = new Subject()
     this.issues$ = this.issues.asObservable()
-    this.issue$ = this.issues.asObservable()
+    this.issue$ = this.issue.asObservable()
     this.zone = zone
 
     this.onIssues()
@@ -23,8 +23,7 @@ export default class JiraService {
   }
 
   getIssue(id) {
-    ipcRenderer.send('getIssue', id, (event, issue) => {
-      self.issue.next(issue)
-    })
+    let issue = ipcRenderer.sendSync('getIssue', id)
+    this.issue.next(issue)
   }
 }
