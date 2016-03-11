@@ -1,6 +1,6 @@
 <div class="issues">
-  <div class="issues__item" *ngFor="#issue of issues">
+  <a [routerLink]="['IssueComponent', {issueId: issue.id}]" class="issues__item" *ngFor="#issue of issues">
     <div class="issues__item__status issues__item__status--{{issue.fields.status.statusCategory.colorName}}"></div>
     {{issue.fields.summary}}
-  </div>
+  </a>
 </div>
