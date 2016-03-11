@@ -1,7 +1,8 @@
 <div class="issues">
   <div [routerLink]="['IssueComponent', {issueId: issue.id}]" class="issues__item" *ngFor="#issue of issues">
-    <div class="issues__item__status issues__item__status--{{issue.fields.status.statusCategory.colorName}}"></div>
+    <img class="issues__item__priority" src="{{issue.fields.priority.iconUrl}}">
     <span class="issues__item__title">{{issue.fields.summary}}</span>
+    <img src="{{issue.fields.issuetype.iconUrl}}">
     <img class="issues__item__avatar" src="{{issue.fields.reporter.avatarUrls['32x32']}}">
   </div>
 </div>
