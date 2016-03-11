@@ -4,19 +4,27 @@ import { NgZone } from 'angular2/core'
 
 export default class JiraService {
   constructor(zone: NgZone) {
-    this.openIssues = new Subject()
-    this.openIssues$ = this.openIssues.asObservable()
+    this.issues = new Subject()
+    this.issue = new Subject()
+    this.issues$ = this.issues.asObservable()
+    this.issue$ = this.issues.asObservable()
     this.zone = zone
 
-    this.onOpenIssues()
+    this.onIssues()
   }
 
-  onOpenIssues() {
+  onIssues() {
     let self = this
     ipcRenderer.on('issues', (event, issues) => {
       self.zone.run(() => {
-        self.openIssues.next(issues)
+        self.issues.next(issues)
       })
+    })
+  }
+
+  getIssue(id) {
+    ipcRenderer.send('getIssue', id, (event, issue) => {
+      self.issue.next(issue)
     })
   }
 }
