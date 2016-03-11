@@ -6,6 +6,7 @@ import { bootstrap } from 'angular2/platform/browser'
 import { appRoutes } from './app.routes'
 import JiraService from './services/jira.service'
 import './scss/base/_base'
+import './scss/layout/_frame'
 
 @Component({
   selector: 'jira-app'

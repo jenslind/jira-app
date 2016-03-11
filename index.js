@@ -4,7 +4,7 @@ const menubar = require('menubar')
 const Jira = require('./src/app/Jira.js')
 const ipc = require('electron').ipcMain
 
-const mb = menubar({'preload-window': true})
+const mb = menubar({'preload-window': true, 'transparent': true})
 const jira = new Jira()
 
 mb.on('ready', () => {

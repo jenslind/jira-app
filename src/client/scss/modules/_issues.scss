@@ -1,21 +1,26 @@
 .issues {
   display: flex;
   flex-direction: column;
+  padding: 0 20px;
 }
 
 .issues__item {
+  font-size: 1.4rem;
   display: flex;
   flex-direction: row;
-  background: #eee;
-  height: 40px;
-  padding: 20px;
-  border-bottom: 1px solid darken(#eee, 10%);
-  transition: background .1s;
+  align-items: center;
+  justify-content: space-between;
+  height: 50px;
   cursor: pointer;
+  border-bottom: 1px solid #ddd;
+  text-transform: uppercase;
+}
 
-  &:hover {
-    background: darken(#eee, 5%);
-  }
+.issues__item__title {
+  width: 250px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .issues__item__status {
@@ -24,4 +29,11 @@
   border-radius: 100%;
   background: green;
   margin-right: 10px;
+}
+
+.issues__item__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 100%;
+  align-self: flex-end;
 }
