@@ -17,6 +17,6 @@ export default class IssuesComponent {
   }
 
   ngOnInit() {
-    this.jira.openIssues$.subscribe(issues => this.issues = issues)
+    this.jira.issues$.subscribe(issues => this.issues = issues)
   }
 }
