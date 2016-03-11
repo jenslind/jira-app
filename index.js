@@ -2,6 +2,7 @@
 
 const menubar = require('menubar')
 const Jira = require('./src/app/Jira.js')
+const ipc = require('electron').ipcMain
 
 const mb = menubar({'preload-window': true})
 const jira = new Jira()
@@ -15,4 +16,11 @@ mb.on('ready', () => {
     .then(issues => {
       mb.window.webContents.send('issues', issues)
     })
+
+  // Get a specific jira issue
+  ipc.on('getIssue', (event, id) => {
+    let jql = 'id=' + id
+    jira.getIssues(jql)
+      .then(issues => event.returnValue = issues[0])
+  })
 })
