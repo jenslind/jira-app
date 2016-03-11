@@ -11,7 +11,7 @@ mb.on('ready', () => {
   mb.window.openDevTools();
 
   // Get jira issues
-  jira.getOpenIssues()
+  jira.getIssues()
     .then(issues => {
       mb.window.webContents.send('issues', issues)
     })

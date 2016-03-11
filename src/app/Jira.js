@@ -14,7 +14,7 @@ class Jira {
     return this.USER + ':' + this.USER_PASS
   }
 
-  getOpenIssues() {
+  getIssues() {
     let self = this
 
     return got(this.BASE + '/search?jql=assignee=' + this.USER + '&status!=done',
