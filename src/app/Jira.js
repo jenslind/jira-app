@@ -14,10 +14,12 @@ class Jira {
     return this.USER + ':' + this.USER_PASS
   }
 
-  getIssues() {
+  getIssues(jql) {
     let self = this
 
-    return got(this.BASE + '/search?jql=assignee=' + this.USER + '&status!=done',
+    if (!jql) jql = 'assignee=' + this.USER + '&status!=done'
+
+    return got(this.BASE + '/search?jql=' + jql,
       {
         auth: self.getAuth(),
         json: true
