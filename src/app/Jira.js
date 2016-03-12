@@ -29,6 +29,30 @@ class Jira {
       })
   }
 
+  assign(issue, user) {
+    let self = this
+    return got.put(issue,
+      {
+        auth: self.getAuth(),
+        body: '{ "fields": { "assignee": { "name": "' + user + '" } } }',
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+  }
+
+  getAssignable(issueKey) {
+    let self = this
+    return got(this.BASE + '/user/assignable/search?issueKey=' + issueKey,
+      {
+        auth: self.getAuth(),
+        json: true
+      })
+      .then((res) => {
+        return res.body
+      })
+  }
+
 }
 
 module.exports = Jira

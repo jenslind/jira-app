@@ -13,10 +13,12 @@ export default class IssueComponent {
     this.jira = jira
     this.params = routeParams.params
     this.issue = {}
+    this.assignable = []
   }
 
   ngOnInit() {
     this.jira.issue$.subscribe(issue => this.issue = issue)
     this.jira.getIssue(this.params.issueId)
+    this.assignable = this.jira.getAssignable(this.issue.key)
   }
 }

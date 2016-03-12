@@ -26,4 +26,8 @@ export default class JiraService {
     let issue = ipcRenderer.sendSync('getIssue', id)
     this.issue.next(issue)
   }
+
+  getAssignable(issueId) {
+    return ipcRenderer.sendSync('getAssignable', issueId)
+  }
 }

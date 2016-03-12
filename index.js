@@ -23,4 +23,10 @@ mb.on('ready', () => {
     jira.getIssues(jql)
       .then(issues => event.returnValue = issues[0])
   })
+
+  // Get assignable users to a issue
+  ipc.on('getAssignable', (event, issueId) => {
+    jira.getAssignable(issueId)
+      .then(assignable => event.returnValue = assignable)
+  })
 })
