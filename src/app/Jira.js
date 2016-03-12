@@ -17,7 +17,7 @@ class Jira {
   getIssues(jql) {
     let self = this
 
-    if (!jql) jql = 'assignee=' + this.USER + '&status!=done'
+    if (!jql) jql = 'assignee=' + this.USER + ' AND status!=done'
 
     return got(this.BASE + '/search?jql=' + jql,
       {
