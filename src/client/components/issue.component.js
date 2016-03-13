@@ -18,10 +18,6 @@ export default class IssueComponent {
     this.issue = {}
     this.assignable = []
     this.fb = fb
-
-    this.assignForm = this.fb.group({
-      assigned: ['', Validators.required]
-    })
   }
 
   getAssignable() {
@@ -42,5 +38,9 @@ export default class IssueComponent {
     this.jira.issue$.subscribe(issue => this.issue = issue)
     this.jira.getIssue(this.params.issueId)
     this.assignable = this.jira.getAssignable(this.issue.key)
+
+    this.assignForm = this.fb.group({
+      assigned: [this.issue.fields.assignee.name, Validators.required]
+    })
   }
 }

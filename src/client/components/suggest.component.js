@@ -4,12 +4,16 @@ import '../scss/modules/_suggest'
 @Component({
   selector: 'suggest',
   inputs: ['haystack', 'control'],
-  template: `<input type="text" class="suggest__input" (keyup)="getSuggestion($event)">
+  template: `<input type="text" class="suggest__input" (keyup)="getSuggestion($event)" [value]="control.value">
   <input type="text" class="suggest__suggestion" [(ngModel)]="suggest" [ngFormControl]="control">`
 })
 export default class Suggest {
   constructor() {
     this.suggest = ''
+  }
+
+  ngOnInit() {
+    this.suggest = this.control.value
   }
 
   getSuggestion(event) {
