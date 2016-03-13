@@ -4,7 +4,8 @@
   <p>{{issue.fields.reporter.displayName}}</p>
   <p>{{issue.fields.description}}</p>
 
-  <form [ngFormModel]="assignForm">
+  <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
     <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned"></suggest>
+    <input type="submit">
   </form>
 </div>

@@ -4,24 +4,31 @@ import '../scss/modules/_suggest'
 @Component({
   selector: 'suggest',
   inputs: ['haystack', 'control'],
-  template: `<input type="text" class="suggest__input" (input)="getSuggestion($event)" [ngFormControl]="control">
-  <div class="suggest__suggestion">{{suggestion}}</div>`
+  template: `<input type="text" class="suggest__input" (keyup)="getSuggestion($event)">
+  <input type="text" class="suggest__suggestion" [(ngModel)]="suggest" [ngFormControl]="control">`
 })
 export default class Suggest {
   constructor() {
-    this.suggestion = ''
+    this.suggest = ''
   }
 
   getSuggestion(event) {
-    let self = this
-    if (!event.target.value) return this.suggestion = null
+    const enterKey = 13
+
+    if (!event.target.value) return this.suggest = ''
     let regex = new RegExp('^' + event.target.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i')
-    self.suggest = ''
-    for (let i = 0, len = self.haystack.length; i < len; i++) {
-      if (regex.test(self.haystack[i])) {
-        self.suggest = self.haystack[i]
+    this.suggestFound = false
+    for (let i = 0, len = this.haystack.length; i < len; i++) {
+      if (regex.test(this.haystack[i])) {
+        this.suggestFound = this.haystack[i]
       }
     }
-    self.suggestion = (self.suggest) ? self.suggest : ''
+
+    if (this.suggestFound) {
+      if (event.which === enterKey) event.target.value = this.suggest
+      this.suggest = this.suggestFound
+    } else {
+      this.suggest = ''
+    }
   }
 }

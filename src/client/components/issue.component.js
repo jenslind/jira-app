@@ -32,6 +32,12 @@ export default class IssueComponent {
     return users
   }
 
+  assignUser() {
+    if (!this.assignForm.status === 'INVALID') return
+    const user = this.assignForm.controls.assigned.value
+    this.jira.assignUser(user)
+  }
+
   ngOnInit() {
     this.jira.issue$.subscribe(issue => this.issue = issue)
     this.jira.getIssue(this.params.issueId)
