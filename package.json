@@ -1,7 +1,7 @@
 {
-  "name": "jira-app",
-  "version": "1.0.0",
-  "description": "",
+  "name": "minira",
+  "version": "0.1.0",
+  "description": "Jira in your menubar.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
