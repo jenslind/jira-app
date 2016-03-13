@@ -3,4 +3,8 @@
   <p>{{issue.fields.project.name}}</p>
   <p>{{issue.fields.reporter.displayName}}</p>
   <p>{{issue.fields.description}}</p>
+
+  <form [ngFormModel]="assignForm">
+    <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned"></suggest>
+  </form>
 </div>
