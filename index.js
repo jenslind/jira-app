@@ -29,4 +29,9 @@ mb.on('ready', () => {
     jira.getAssignable(issueId)
       .then(assignable => event.returnValue = assignable)
   })
+
+  // Assign user to a issue
+  ipc.on('assignUser', (event, data) => {
+    jira.assignUser(data.issue, data.user)
+  })
 })

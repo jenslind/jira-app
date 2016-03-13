@@ -29,7 +29,7 @@ class Jira {
       })
   }
 
-  assign(issue, user) {
+  assignUser(issue, user) {
     let self = this
     return got.put(issue,
       {

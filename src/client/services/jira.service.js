@@ -31,7 +31,7 @@ export default class JiraService {
     return ipcRenderer.sendSync('getAssignable', issueId)
   }
 
-  assignUser(user) {
-    console.log('assign to: ' + user)
+  assignUser(issue, user) {
+    ipcRenderer.send('assignUser', {issue: issue, user: user})
   }
 }
