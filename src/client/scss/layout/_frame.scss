@@ -8,10 +8,13 @@
 .frame__header {
   width: 100%;
   height: 40px;
-  background: #ddd;
-  border-top: 1px solid #aaa;
-  border-top-left-radius: 10px;
-  border-top-right-radius: 10px;
+  background: #fff;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  border-bottom: 1px solid darken(#F7F8FB, 15%);
+  box-shadow: 0 3px 5px darken(#F7F8FB, 5%);
+  position: relative;
+  z-index: 5;
 
   &:before {
     bottom: 100%;
@@ -45,5 +48,5 @@
 .frame__content {
   overflow-y: scroll;
   height: calc(100% - 40px);
-  background: #fff;
+  background: #F7F8FB;
 }
