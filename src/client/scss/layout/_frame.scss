@@ -1,18 +1,17 @@
 .frame {
-  background: #fff;
   width: 100%;
-  height: 380px;
+  height: 385px;
   position: absolute;
   bottom: 0;
 }
 
 .frame__header {
   width: 100%;
-  height: 50px;
-  background: #fff;
-  position: absolute;
-  top: 0;
+  height: 40px;
+  background: #ddd;
   border-top: 1px solid #aaa;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 
   &:before {
     bottom: 100%;
@@ -24,8 +23,8 @@
   	position: absolute;
   	pointer-events: none;
   	border-bottom-color: #aaa;
-  	border-width: 16px;
-  	margin-left: -16px;
+  	border-width: 11px;
+  	margin-left: -11px;
   }
 
   &:after {
@@ -38,13 +37,13 @@
   	position: absolute;
   	pointer-events: none;
   	border-bottom-color: #fff;
-  	border-width: 15px;
-  	margin-left: -15px;
+  	border-width: 10px;
+  	margin-left: -10px;
   }
 }
 
 .frame__content {
   overflow-y: scroll;
-  height: 100%;
-  padding-top: 50px;
+  height: calc(100% - 40px);
+  background: #fff;
 }
