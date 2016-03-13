@@ -1,0 +1,31 @@
+suggest {
+  display: block;
+  width: 200px;
+  height: 40px;
+  position: relative;
+}
+
+.suggest__input {
+  border: 1px solid #000;
+  background: transparent;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  color: #333;
+  font-size: 14px;
+  position: relative;
+  z-index: 2;
+}
+
+.suggest__suggestion {
+  position: absolute;
+  width: 100%;
+  height: 40px;
+  padding: 10px;
+  color: #888;
+  font-size: 14px;
+  line-height: 1.5;
+  top: 0;
+  left: 0;
+  z-index: 1;
+}
