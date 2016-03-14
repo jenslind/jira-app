@@ -53,6 +53,18 @@ class Jira {
       })
   }
 
+  getStatuses(projectId) {
+    let self = this
+    return got(this.BASE + '/project/' + projectId + '/statuses',
+      {
+        auth: self.getAuth(),
+        json: true
+      })
+      .then((res) => {
+        return res.body
+      })
+  }
+
 }
 
 module.exports = Jira

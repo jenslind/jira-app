@@ -34,4 +34,8 @@ export default class JiraService {
   assignUser(issue, user) {
     ipcRenderer.send('assignUser', {issue: issue, user: user})
   }
+
+  getStatuses(projectId) {
+    return ipcRenderer.sendSync('getStatuses', projectId)
+  }
 }

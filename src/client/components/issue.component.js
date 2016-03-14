@@ -38,6 +38,7 @@ export default class IssueComponent {
     this.jira.issue$.subscribe(issue => this.issue = issue)
     this.jira.getIssue(this.params.issueId)
     this.assignable = this.jira.getAssignable(this.issue.key)
+    this.statuses = this.jira.getStatuses(this.issue.fields.project.id)
 
     this.assignForm = this.fb.group({
       assigned: [this.issue.fields.assignee.name, Validators.required]

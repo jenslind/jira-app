@@ -34,4 +34,9 @@ mb.on('ready', () => {
   ipc.on('assignUser', (event, data) => {
     jira.assignUser(data.issue, data.user)
   })
+
+  ipc.on('getStatuses', (event, projectId) => {
+    jira.getStatuses(projectId)
+      .then(statuses => event.returnValue = statuses)
+  })
 })
