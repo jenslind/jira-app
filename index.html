@@ -1,11 +1,21 @@
 <!DOCTYPE html>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
 <link href='https://fonts.googleapis.com/css?family=Gentium+Book+Basic' rel='stylesheet' type='text/css'>
+<link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
 <link rel="stylesheet" href="node_modules/normalize.css/normalize.css">
 <link rel="stylesheet" href="bundle.css">
 <script src="bundle.js"></script>
 <base href='/'>
 <div class="frame">
-  <div class="frame__header"></div>
+  <div class="frame__header">
+    <div class="frame__header__button_wrapper">
+      <img class="frame__header__avatar" src="">
+    </div>
+    <span class="logo">Minira</span>
+    <div class="frame__header__button_wrapper frame__header__button_wrapper--right">
+      <button class="frame__header__button">Settings</button>
+    </div>
+  </div>
   <div class="frame__content">
     <jira-app></jira-app>
   </div>

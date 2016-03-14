@@ -8,7 +8,7 @@
 .frame__header {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   width: 100%;
   height: 40px;
   background: #fff;
@@ -18,6 +18,8 @@
   box-shadow: 0 3px 5px darken(#F7F8FB, 5%);
   position: relative;
   z-index: 5;
+  padding-left: 10px;
+  padding-right: 10px;
 
   &:before {
     bottom: 100%;

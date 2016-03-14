@@ -1,0 +1,22 @@
+.frame__header__button_wrapper {
+  width: 100px;
+  border: 1px solid hotpink;
+
+  &--right {
+    text-align: right;
+  }
+}
+
+.frame__header__button {
+  border: 1px solid #614385;
+  border-radius: 3px;
+  color: #614385;
+  background: transparent;
+  transition: all .1s;
+  text-transform: uppercase;
+  outline: 0;
+
+  &:hover {
+    opacity: .4;
+  }
+}

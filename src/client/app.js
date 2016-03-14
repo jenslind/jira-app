@@ -8,6 +8,7 @@ import JiraService from './services/jira.service'
 import './scss/base/_base'
 import './scss/layout/_frame'
 import './scss/elements/_logo'
+import './scss/components/_btn'
 
 @Component({
   selector: 'jira-app'
