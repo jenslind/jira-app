@@ -4,14 +4,14 @@
 }
 
 .issues__item {
-  font-size: 1.4rem;
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   height: 60px;
   cursor: pointer;
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid lighten(#6D87B3, 30%);
   padding-right: 10px;
   padding-bottom: 15px;
   padding-top: 15px;
@@ -25,16 +25,20 @@
 
 .issues__item__title {
   display: block;
-  width: 250px;
+  max-width: 270px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
-  font-weight: bold;
+  color: #6D87B3;
+  font-size: 1.6rem;
 }
 
 .issues__item__project {
+  display: block;
+  margin-top: 5px;
   color: #999;
   text-transform: uppercase;
+  font-size: 1.2rem;
 }
 
 .issues__item__status {
@@ -49,11 +53,9 @@
   display: flex;
   width: 60px;
   height: 60px;
-  // background: #F3F6FB;
   align-items: center;
   justify-content: center;
   position: relative;
-  border-right: 1px solid #eee;
 
   .issues__item__avatar__img {
     width: 38px;
@@ -74,7 +76,8 @@
 }
 
 .issues__item__type {
-  background: #eee;
+  background: darken(#F3F6FB, 10%);
   padding: 5px;
   border-radius: 100%;
+  margin-left: auto;
 }
