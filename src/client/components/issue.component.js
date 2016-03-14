@@ -34,6 +34,16 @@ export default class IssueComponent {
     this.jira.assignUser(this.issue.self, user)
   }
 
+  getStatuses() {
+    let statuses = []
+    for (let i, len = this.statuses.length; i < len; i++) {
+      if (this.statuses[i].id === this.issuetype.id) {
+        statuses = this.statuses[i].statuses
+      }
+    }
+    return statuses
+  }
+
   ngOnInit() {
     this.jira.issue$.subscribe(issue => this.issue = issue)
     this.jira.getIssue(this.params.issueId)
