@@ -1,11 +1,17 @@
 <div class="issue">
-  <h4>{{issue.fields.summary}}</h4>
-  <p>{{issue.fields.project.name}}</p>
-  <p>{{issue.fields.reporter.displayName}}</p>
-  <p>{{issue.fields.description}}</p>
+  <h2>{{issue.fields.summary}}</h2>
 
-  <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
-    <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned"></suggest>
-    <input type="submit">
-  </form>
+  <div class="issue__info">
+    <div class="issue__info__item">{{issue.fields.project.name}}</div>
+    <div class="issue__info__item">{{issue.fields.reporter.displayName}}</div>
+    <div class="issue__info__item">{{issue.fields.priority.name}}</div>
+  </div>
+  <div [innerHTML]="issue.fields.description"></div>
+
+  <div class="issue__footer">
+    <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
+      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned"></suggest>
+      <input type="submit">
+    </form>
+  </div>
 </div>

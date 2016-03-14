@@ -1,0 +1,34 @@
+.issue {
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 50px;
+
+  h2 {
+    text-align: center;
+    color: #6D87B3;
+  }
+}
+
+.issue__info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.issue__footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 45px;
+  background: #fff;
+  border-top: 1px solid darken(#F7F8FB, 15%);
+
+  input[type="submit"] {
+    display: none;
+  }
+
+  input[type="text"] {
+    border: 0;
+  }
+}

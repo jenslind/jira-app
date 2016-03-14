@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from 'angular2/common'
 import { RouteParams } from 'angular2/router'
 import JiraService from '../services/jira.service'
 import Suggest from './suggest.component'
+import '../scss/modules/_issue'
 
 @Component({
   selector: 'issue'
