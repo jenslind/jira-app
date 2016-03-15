@@ -6,7 +6,7 @@
     <div class="issue__info__item">{{issue.fields.reporter.displayName}}</div>
     <div class="issue__info__item">{{issue.fields.priority.name}}</div>
   </div>
-  <div [innerHTML]="issue.fields.description"></div>
+  <div [innerHTML]="issue.renderedFields.description"></div>
 
   <div class="issue__footer">
     <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">

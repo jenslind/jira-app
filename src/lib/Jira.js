@@ -37,7 +37,7 @@ class Jira {
 
   getIssue(id) {
     let self = this
-    return got(this._getBaseUrl() + '/issue/' + id, {
+    return got(this._getBaseUrl() + '/issue/' + id + '?expand=renderedFields', {
       auth: self._getAuth(),
       json: true
     })
