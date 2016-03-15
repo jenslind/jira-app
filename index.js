@@ -24,9 +24,8 @@ mb.on('ready', () => {
 
   // Get a specific jira issue
   ipc.on('getIssue', (event, id) => {
-    let jql = 'id=' + id
-    jira.getIssues(jql)
-      .then(issues => event.returnValue = issues[0])
+    jira.getIssue(id)
+      .then(issue => event.returnValue = issue)
   })
 
   // Get assignable users to a issue

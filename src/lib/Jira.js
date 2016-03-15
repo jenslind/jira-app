@@ -35,6 +35,17 @@ class Jira {
       })
   }
 
+  getIssue(id) {
+    let self = this
+    return got(this._getBaseUrl() + '/issue/' + id, {
+      auth: self._getAuth(),
+      json: true
+    })
+    .then(res => {
+      return res.body
+    })
+  }
+
   assignUser(issue, user) {
     let self = this
     return got.put(issue,
