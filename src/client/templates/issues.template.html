@@ -10,4 +10,8 @@
     </div>
     <img class="issues__item__type" src="{{issue.fields.issuetype.iconUrl}}">
   </div>
+  <div class="issues__zero" [hidden]="hideZero">
+    <div class="issues__zero__done"></div>
+    <h2>No issues found</h2>
+  </div>
 </div>

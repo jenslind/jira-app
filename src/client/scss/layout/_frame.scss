@@ -14,8 +14,6 @@
   background: #fff;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  border-bottom: 1px solid darken(#F7F8FB, 15%);
-  box-shadow: 0 3px 5px darken(#F7F8FB, 5%);
   position: relative;
   z-index: 5;
   padding-left: 10px;
@@ -51,7 +49,7 @@
 }
 
 .frame__content {
-  overflow-y: scroll;
+  overflow-y: auto;
   height: calc(100% - 40px);
   background: #F7F8FB;
 }

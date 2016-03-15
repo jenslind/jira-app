@@ -1,6 +1,9 @@
 .issues {
   display: flex;
   flex-direction: column;
+  border-top: 1px solid darken(#F7F8FB, 15%);
+  box-shadow: inset 0 3px 5px darken(#F7F8FB, 5%);
+  height: 100%;
 }
 
 .issues__item {
@@ -90,4 +93,47 @@
   padding: 5px;
   border-radius: 100%;
   margin-left: auto;
+}
+
+.issues__zero {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: url('./graphics/zero.png');
+    background-size: cover;
+    opacity: .1;
+    z-index: 1;
+  }
+
+  &[hidden] {
+    display: none;
+  }
+
+  h2 {
+    color: #003463;
+  }
+}
+
+.issues__zero__done {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background: url('./graphics/done.gif');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 2;
 }

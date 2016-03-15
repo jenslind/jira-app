@@ -14,10 +14,15 @@ export default class IssuesComponent {
   constructor(jira: JiraService) {
     this.jira = jira
     this.issues = []
+    this.hideZero = true
   }
 
   ngOnInit() {
-    this.jira.issues$.subscribe(issues => this.issues = issues)
+    let self = this
+    this.jira.issues$.subscribe(issues => {
+      self.issues = issues
+      if (!issues.length) self.hideZero = false
+    })
     this.jira.getIssues()
   }
 }

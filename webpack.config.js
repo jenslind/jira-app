@@ -1,4 +1,5 @@
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const webpack = require('webpack')
 
 const config = {
   entry: {
@@ -13,7 +14,7 @@ const config = {
       {
         test: /\.scss$/,
         exclude: /node_modules/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?sourceMap!sass-loader')
+        loader: ExtractTextPlugin.extract('style-loader', 'css-loader?-url&sourceMap!sass-loader')
       },
       {
         test: /\.html$/,
@@ -28,6 +29,7 @@ const config = {
   },
   plugins: [
     new ExtractTextPlugin('bundle.css'),
+    new webpack.IgnorePlugin(/vertx/)
   ],
   resolve: {
     extensions: ['', '.scss', '.js', '.html'],
