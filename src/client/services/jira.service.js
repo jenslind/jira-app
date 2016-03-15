@@ -38,4 +38,8 @@ export default class JiraService {
   getStatuses(projectId) {
     return ipcRenderer.sendSync('getStatuses', projectId)
   }
+
+  isAuthed() {
+    return ipcRenderer.sendSync('isAuthed')
+  }
 }

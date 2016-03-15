@@ -14,6 +14,10 @@ class Jira {
     return this.USER + ':' + this.USER_PASS
   }
 
+  isAuthed() {
+    return true
+  }
+
   getIssues(jql) {
     let self = this
 

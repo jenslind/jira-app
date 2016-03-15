@@ -1,7 +1,8 @@
 import 'zone.js/build/lib/browser/zone-microtask'
 import 'reflect-metadata'
 import { Component, View, provide } from 'angular2/core'
-import { RouteConfig, RouterOutlet, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router'
+import { RouteConfig, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy } from 'angular2/router'
+import { AuthRouterOutlet } from './directives/authRouterOutlet.directive'
 import { bootstrap } from 'angular2/platform/browser'
 import { appRoutes } from './app.routes'
 import JiraService from './services/jira.service'
@@ -14,7 +15,7 @@ import './scss/components/_btn'
   selector: 'jira-app'
 })
 @View({
-  directives: [RouterOutlet],
+  directives: [AuthRouterOutlet],
   template: '<router-outlet></router-outlet>'
 })
 @RouteConfig(appRoutes)

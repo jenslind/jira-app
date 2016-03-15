@@ -39,4 +39,9 @@ mb.on('ready', () => {
     jira.getStatuses(projectId)
       .then(statuses => event.returnValue = statuses)
   })
+
+  ipc.on('isAuthed', (event) => {
+    jira.isAuthed()
+      .then(authed => event.returnValue = authed)
+  })
 })
