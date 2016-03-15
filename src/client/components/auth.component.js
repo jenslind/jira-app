@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from 'angular2/common'
 import { Router } from 'angular2/router'
 import JiraService from '../services/jira.service'
 import { ipcRenderer } from 'electron'
+import '../scss/modules/_auth'
 
 @Component({
   selector: 'auth'

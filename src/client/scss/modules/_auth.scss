@@ -1,0 +1,72 @@
+.auth {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  background: #003463;
+  position: relative;
+  z-index: 1;
+  border-top: 1px solid darken(#003463, 15%);
+  box-shadow: inset 0 3px 5px darken(#003463, 5%);
+
+  &:after {
+    display: block;
+    content: '';
+    position: absolute;
+    background: url('./graphics/test.jpg');
+    background-color: #003463;
+    background-blend-mode: overlay;
+    background-size: cover;
+    background-position: center;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    opacity: .2;
+    z-index: -1;
+    -webkit-filter: blur(10px);
+  }
+}
+
+.auth__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  input[type=text],
+  input[type=password] {
+    width: 70%;
+    border: 2px solid #fff;
+    border-radius: 2px;
+    color: #fff;
+    padding: 10px;
+    font-size: 1.4rem;
+    background: transparent;
+    margin-bottom: 15px;
+    outline: 0;
+    opacity: .6;
+    transition: all .2s;
+
+    &:focus {
+      opacity: 1;
+    }
+
+    &::-webkit-input-placeholder {
+      color: #fff;
+    }
+  }
+}
+
+.auth__submit {
+  width: 200px;
+  height: 40px;
+  border-radius: 30px;
+  color: #fff;
+  text-transform: uppercase;
+  background: #92D950;
+  font-size: 1.4rem;
+  outline: 0;
+}
