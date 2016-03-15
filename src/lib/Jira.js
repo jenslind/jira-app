@@ -4,18 +4,22 @@ const got = require('got')
 
 class Jira {
 
-  constructor(base, user) {
-    this.BASE = ''
-    this.USER = ''
-    this.USER_PASS = ''
+  constructor(auth) {
+    this.BASE_URL = auth.baseUrl
+    this.USER = auth.user
+    this.PASS = auth.pass
   }
 
-  getAuth() {
-    return this.USER + ':' + this.USER_PASS
+  _getAuth() {
+    return this.USER + ':' + this.PASS
+  }
+
+  _getBaseUrl() {
+    return this.BASE_URL + '/rest/api/2'
   }
 
   isAuthed() {
-    return true
+    return false
   }
 
   getIssues(jql) {
@@ -23,9 +27,9 @@ class Jira {
 
     if (!jql) jql = 'assignee=' + this.USER + ' AND status!=done'
 
-    return got(this.BASE + '/search?jql=' + jql,
+    return got(this._getBaseUrl() + '/search?jql=' + jql,
       {
-        auth: self.getAuth(),
+        auth: self._getAuth(),
         json: true
       })
       .then((res) => {
@@ -37,7 +41,7 @@ class Jira {
     let self = this
     return got.put(issue,
       {
-        auth: self.getAuth(),
+        auth: self._getAuth(),
         body: '{ "fields": { "assignee": { "name": "' + user + '" } } }',
         headers: {
           'Content-Type': 'application/json'
@@ -47,9 +51,9 @@ class Jira {
 
   getAssignable(issueKey) {
     let self = this
-    return got(this.BASE + '/user/assignable/search?issueKey=' + issueKey,
+    return got(this._getBaseUrl() + '/user/assignable/search?issueKey=' + issueKey,
       {
-        auth: self.getAuth(),
+        auth: self._getAuth(),
         json: true
       })
       .then((res) => {
@@ -59,9 +63,9 @@ class Jira {
 
   getStatuses(projectId) {
     let self = this
-    return got(this.BASE + '/project/' + projectId + '/statuses',
+    return got(this._getBaseUrl() + '/project/' + projectId + '/statuses',
       {
-        auth: self.getAuth(),
+        auth: self._getAuth(),
         json: true
       })
       .then((res) => {
