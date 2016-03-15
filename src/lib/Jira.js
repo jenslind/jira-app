@@ -5,9 +5,11 @@ const got = require('got')
 class Jira {
 
   constructor(auth) {
-    this.BASE_URL = auth.baseUrl
-    this.USER = auth.user
-    this.PASS = auth.pass
+    if (auth) {
+      this.BASE_URL = auth.baseUrl
+      this.USER = auth.user
+      this.PASS = auth.pass
+    }
   }
 
   _getAuth() {
@@ -16,10 +18,6 @@ class Jira {
 
   _getBaseUrl() {
     return this.BASE_URL + '/rest/api/2'
-  }
-
-  isAuthed() {
-    return false
   }
 
   getIssues(jql) {

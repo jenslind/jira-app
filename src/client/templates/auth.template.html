@@ -1,1 +1,6 @@
-auth
+<form [ngFormModel]="authForm" (ngSubmit)="auth()">
+  <input type="text" placeholder="JIRA base url" ngControl="baseUrl">
+  <input type="text" placeholder="Username" ngControl="user">
+  <input type="text" placeholder="Password" ngControl="pass">
+  <input type="submit" value="Sign in">
+</form>

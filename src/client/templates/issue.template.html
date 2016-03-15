@@ -10,7 +10,7 @@
 
   <div class="issue__footer">
     <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
-      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned"></suggest>
+      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned" [value]="issue.fields.reporter.name"></suggest>
       <input type="submit">
     </form>
   </div>

@@ -16,7 +16,7 @@ export class AuthRouterOutlet extends RouterOutlet {
 
   activate(instruction: ComponentInstruction) {
     if (!this.parentRouter.isRouteActive(this.parentRouter.generate(['/AuthComponent']))
-      && this.jira.isAuthed()) {
+      && !this.jira.isAuthed()) {
       this.parentRouter.navigateByUrl('/auth')
     }
 

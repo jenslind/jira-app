@@ -13,6 +13,10 @@ export default class JiraService {
     this.onIssues()
   }
 
+  getIssues() {
+    ipcRenderer.send('getIssues', null)
+  }
+
   onIssues() {
     let self = this
     ipcRenderer.on('issues', (event, issues) => {

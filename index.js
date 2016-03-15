@@ -1,21 +1,26 @@
 'use strict'
 
 const menubar = require('menubar')
-const Jira = require('./src/app/Jira.js')
+const Jira = require('./src/lib/Jira.js')
+const Auth = require('./src/lib/Auth.js')
 const ipc = require('electron').ipcMain
 
-const mb = menubar({'preload-window': true, 'transparent': true})
-const jira = new Jira()
+const mb = menubar({
+  'preload-window': true,
+  'transparent': true,
+  'resizable': false
+})
+let jira = null
 
 mb.on('ready', () => {
   // Open dev-tools
   mb.window.openDevTools();
 
-  // Get jira issues
-  jira.getIssues()
-    .then(issues => {
-      mb.window.webContents.send('issues', issues)
-    })
+  // Get many issues
+  ipc.on('getIssues', (event, jql) => {
+    jira.getIssues(jql)
+      .then(issues => mb.window.webContents.send('issues', issues))
+  })
 
   // Get a specific jira issue
   ipc.on('getIssue', (event, id) => {
@@ -41,7 +46,19 @@ mb.on('ready', () => {
   })
 
   ipc.on('isAuthed', (event) => {
-    jira.isAuthed()
-      .then(authed => event.returnValue = authed)
+    Auth.getAuth(success => {
+      if (!jira && success) jira = new Jira(success)
+      event.returnValue = success
+    })
+  })
+
+  ipc.on('auth', (event, info) => {
+    Auth.auth(info)
+      .then(res => {
+        event.returnValue = true
+      })
+      .catch(err => {
+        event.returnValue = false
+      })
   })
 })
