@@ -1,0 +1,21 @@
+<div class="settings">
+  <form [ngFormModel]="settingsForm">
+    <fieldset>
+      <legend>Settings</legend>
+      <label>Issues query (JQL)</label>
+      <input type="text" ngControl="jql">
+      <input type="submit" value="Save" [hidden]="true">
+    </fieldset>
+  </form>
+
+  <form (ngSubmit)="unlink()">
+    <fieldset>
+      <legend>Account settings</legend>
+      <div class="settings__account">
+        <img [src]="user.avatar">
+        <p>Authenticated as <br> {{user.user}}</p>
+        <input type="submit" value="Unlink">
+      </div>
+    </fieldset>
+  </form>
+</div>

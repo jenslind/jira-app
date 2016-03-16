@@ -18,7 +18,8 @@ class Auth {
       .then(res => {
         storage.set('authSettings', {
           baseUrl: info.baseUrl,
-          user: info.user
+          user: info.user,
+          userAvatar: res.body.avatarUrls['48x48']
         }, () => {
           keytar.addPassword('Minira', info.user, info.pass)
           Promise.resolve(true)
@@ -35,7 +36,8 @@ class Auth {
       return cb({
         baseUrl: settings.baseUrl,
         user: settings.user,
-        pass: pass
+        pass: pass,
+        avatar: settings.userAvatar
       })
     })
   }

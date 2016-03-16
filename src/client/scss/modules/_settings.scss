@@ -1,0 +1,60 @@
+.settings {
+  padding: 20px;
+  background: #fff;
+  height: 100%;
+  color: #697583;
+
+  fieldset {
+    border: 0;
+    border-top: 1px solid #697583;
+    padding: 0;
+    padding-top: 15px;
+    margin-bottom: 15px;
+  }
+
+  legend {
+    font-size: 1.4rem;
+    text-transform: uppercase;
+    padding: 10px 20px;
+    background: #fff;
+    margin: 0 auto;
+  }
+
+  label {
+    font-size: 1.4rem;
+    display: block;
+    margin-bottom: 5px;
+  }
+
+  input[type="text"] {
+    display: block;
+    border: 2px solid #697583;
+    border-radius: 2px;
+    padding: 10px;
+    font-size: 1.4rem;
+    color: #697583;
+    outline: 0;
+    width: 100%;
+  }
+}
+
+.settings__account {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  text-align: center;
+
+  img {
+    width: 48px;
+    height: 48px;
+    border-radius: 100%;
+  }
+
+  input[type="submit"] {
+    background: #e39a9a;
+    color: #833737;
+    border-radius: 2px;
+  }
+}

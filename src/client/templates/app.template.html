@@ -1,0 +1,14 @@
+<div class="frame">
+  <div class="frame__header">
+    <div class="frame__header__button_wrapper">
+      <img class="frame__header__avatar" src="">
+    </div>
+    <span class="logo">Minira</span>
+    <div class="frame__header__button_wrapper frame__header__button_wrapper--right">
+      <button [routerLink]="['SettingsComponent']" class="frame__header__button">Settings</button>
+    </div>
+  </div>
+  <div class="frame__content">
+    <router-outlet></router-outlet>
+  </div>
+</div>
