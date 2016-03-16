@@ -6,6 +6,7 @@ import { AuthRouterOutlet } from './directives/authRouterOutlet.directive'
 import { bootstrap } from 'angular2/platform/browser'
 import { appRoutes } from './app.routes'
 import JiraService from './services/jira.service'
+import NavService from './services/nav.service'
 import './scss/base/_base'
 import './scss/layout/_frame'
 import './scss/elements/_logo'
@@ -20,13 +21,17 @@ import './scss/components/_btn'
 })
 @RouteConfig(appRoutes)
 class JiraApp {
-
+  constructor(nav: NavService) {
+    this.nav = nav
+    this.buttons = this.nav.get()
+  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {
   bootstrap(JiraApp, [
     ROUTER_PROVIDERS,
     provide(LocationStrategy, { useClass: HashLocationStrategy }),
-    JiraService
+    JiraService,
+    NavService
   ])
 })

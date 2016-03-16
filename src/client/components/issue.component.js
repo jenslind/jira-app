@@ -2,6 +2,7 @@ import { Component, View } from 'angular2/core'
 import { FormBuilder, Validators } from 'angular2/common'
 import { RouteParams } from 'angular2/router'
 import JiraService from '../services/jira.service'
+import NavService from '../services/nav.service'
 import Suggest from './suggest.component'
 import '../scss/modules/_issue'
 
@@ -13,12 +14,14 @@ import '../scss/modules/_issue'
   template: require('../templates/issue.template')
 })
 export default class IssueComponent {
-  constructor(jira: JiraService, routeParams: RouteParams, fb: FormBuilder) {
+  constructor(jira: JiraService, routeParams: RouteParams, fb: FormBuilder, nav: NavService) {
     this.jira = jira
     this.params = routeParams.params
     this.issue = {}
     this.assignable = []
     this.fb = fb
+
+    nav.show('settings').show('issues')
   }
 
   getAssignable() {
