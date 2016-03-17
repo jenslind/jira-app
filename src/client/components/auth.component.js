@@ -20,12 +20,21 @@ export default class AuthComponent {
       user: ['', Validators.required],
       pass: ['', Validators.required]
     })
+
+    this.hideLoading = true
   }
 
   auth() {
-    const success = ipcRenderer.sendSync('auth', this.authForm.value)
-    if (success) {
-      this.router.navigateByUrl('/')
-    }
+    this.hideLoading = false
+
+    let self = this
+    setTimeout(() => {
+      const success = ipcRenderer.sendSync('auth', this.authForm.value)
+      if (success) {
+        self.router.navigateByUrl('/')
+      } else {
+        self.hideLoading = true
+      }
+    }, 500)
   }
 }
