@@ -1,12 +1,12 @@
+@import 'src/client/scss/utils/_colors';
+
 .settings {
   padding: 20px;
-  background: #fff;
   height: 100%;
-  color: #697583;
 
   fieldset {
     border: 0;
-    border-top: 1px solid #697583;
+    border-top: 1px solid $color-bg-blue-text;
     padding: 0;
     padding-top: 15px;
     margin-bottom: 15px;
@@ -16,7 +16,7 @@
     font-size: 1.4rem;
     text-transform: uppercase;
     padding: 10px 20px;
-    background: #fff;
+    background: $color-bg-blue;
     margin: 0 auto;
   }
 
@@ -28,13 +28,14 @@
 
   input[type="text"] {
     display: block;
-    border: 2px solid #697583;
+    border: 2px solid $color-bg-blue-text;
     border-radius: 2px;
     padding: 10px;
     font-size: 1.4rem;
-    color: #697583;
+    color: $color-bg-blue-text;
     outline: 0;
     width: 100%;
+    background: transparent;
   }
 }
 

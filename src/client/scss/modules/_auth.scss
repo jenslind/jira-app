@@ -1,3 +1,5 @@
+@import 'src/client/scss/utils/_colors';
+
 .auth {
   display: flex;
   align-items: center;
@@ -12,7 +14,7 @@
 
   h4 {
     font-size: 1.2rem;
-    color: #fff;
+    color: $color-white;
     margin-top: 0;
     margin-bottom: 30px;
   }
@@ -28,9 +30,9 @@
   input[type=text],
   input[type=password] {
     width: 60%;
-    border: 2px solid #fff;
+    border: 2px solid $color-white;
     border-radius: 2px;
-    color: #fff;
+    color: $color-white;
     padding: 10px;
     font-size: 1.4rem;
     background: transparent;
@@ -38,7 +40,7 @@
     outline: 0;
 
     &::-webkit-input-placeholder {
-      color: #fff;
+      color: $color-white;
     }
   }
 }

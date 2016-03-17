@@ -1,12 +1,26 @@
 <div class="issue">
-  <h2>{{issue.fields.summary}}</h2>
+  <div class="issue__header">
+    <div class="issue__header__top">
+      <img [src]="issue.fields.issuetype.iconUrl">
+      <h1>{{issue.fields.summary}}</h1>
+      <div class="issue__priority"><img [src]="issue.fields.priority.iconUrl"></div>
+    </div>
 
-  <div class="issue__info">
-    <div class="issue__info__item">{{issue.fields.project.name}}</div>
-    <div class="issue__info__item">{{issue.fields.reporter.displayName}}</div>
-    <div class="issue__info__item">{{issue.fields.priority.name}}</div>
+    <div class="issue__header__avatars">
+      <div class="issue__header__avatars__avatar">
+        <img [src]="issue.fields.reporter.avatarUrls['48x48']">
+        <span>Reporter</span>
+        {{issue.fields.reporter.displayName}}
+      </div>
+      <div class="issue__header__avatars__avatar">
+        <img [src]="issue.fields.project.avatarUrls['48x48']">
+        <span>Project</span>
+        {{issue.fields.project.name}}
+      </div>
+    </div>
   </div>
-  <div [innerHTML]="issue.renderedFields.description"></div>
+
+  <div class="issue__content" [innerHTML]="issue.renderedFields.description"></div>
 
   <div class="issue__footer">
     <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
