@@ -13,8 +13,8 @@ export default class JiraService {
     this.onIssues()
   }
 
-  getIssues() {
-    ipcRenderer.send('getIssues', null)
+  getIssues(jql) {
+    ipcRenderer.send('getIssues', jql)
   }
 
   onIssues() {

@@ -16,9 +16,10 @@ export default class SettingsComponent {
     this.fb = fb
     this.router = router
     this.user = ipcRenderer.sendSync('isAuthed')
+    this.settings = ipcRenderer.sendSync('getSettings')
 
     this.settingsForm = this.fb.group({
-      jql: ['']
+      issueQuery: [this.settings.issueQuery]
     })
 
     nav.show('settings').show('issues')
@@ -27,5 +28,9 @@ export default class SettingsComponent {
   unlink() {
     let done = ipcRenderer.sendSync('unAuth')
     if (done) this.router.navigateByUrl('/auth')
+  }
+
+  updateSettings() {
+    ipcRenderer.send('updateSettings', this.settingsForm.value)
   }
 }

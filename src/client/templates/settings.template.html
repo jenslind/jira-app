@@ -2,9 +2,8 @@
   <form [ngFormModel]="settingsForm">
     <fieldset>
       <legend>Settings</legend>
-      <label>Issues query (JQL)</label>
-      <input type="text" ngControl="jql">
-      <input type="submit" value="Save" [hidden]="true">
+      <label>Issue query (JQL)</label>
+      <input type="text" ngControl="issueQuery" (blur)="updateSettings()">
     </fieldset>
   </form>
 

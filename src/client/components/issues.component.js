@@ -2,6 +2,7 @@ import { Component, View } from 'angular2/core'
 import { ROUTER_DIRECTIVES } from 'angular2/router'
 import JiraService from '../services/jira.service'
 import NavService from '../services/nav.service'
+import { ipcRenderer } from 'electron'
 import '../scss/modules/_issues'
 
 @Component({
@@ -26,6 +27,7 @@ export default class IssuesComponent {
       self.issues = issues
       if (!issues.length) self.hideZero = false
     })
-    this.jira.getIssues()
+    this.settings = ipcRenderer.sendSync('getSettings')
+    this.jira.getIssues(this.settings.issueQuery)
   }
 }

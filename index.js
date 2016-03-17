@@ -4,6 +4,7 @@ const menubar = require('menubar')
 const Jira = require('./src/lib/Jira.js')
 const Auth = require('./src/lib/Auth.js')
 const ipc = require('electron').ipcMain
+const storage = require('electron-json-storage')
 
 const mb = menubar({
   'preload-window': true,
@@ -64,6 +65,16 @@ mb.on('ready', () => {
   ipc.on('unAuth', (event) => {
     Auth.unAuth((done) => {
       event.returnValue = done
+    })
+  })
+
+  ipc.on('updateSettings', (event, data) => {
+    storage.set('settings', data)
+  })
+
+  ipc.on('getSettings', (event) => {
+    storage.get('settings', (err, settings) => {
+      event.returnValue = settings
     })
   })
 })
