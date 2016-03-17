@@ -60,4 +60,10 @@ mb.on('ready', () => {
         event.returnValue = false
       })
   })
+
+  ipc.on('unAuth', (event) => {
+    Auth.unAuth((done) => {
+      event.returnValue = done
+    })
+  })
 })

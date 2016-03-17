@@ -29,7 +29,7 @@ class Auth {
 
   static getAuth(cb) {
     storage.get('authSettings', (err, settings) => {
-      if (!settings || err) return cb(false)
+      if (!settings.length || err) return cb(false)
       const pass = keytar.getPassword('Minira', settings.user)
       if (!pass) return cb(false)
 
@@ -38,6 +38,15 @@ class Auth {
         user: settings.user,
         pass: pass,
         avatar: settings.userAvatar
+      })
+    })
+  }
+
+  static unAuth(cb) {
+    storage.get('authSettings', (err, settings) => {
+      storage.remove('authSettings', (err) => {
+        keytar.deletePassword('Minira', settings.user)
+        cb(true)
       })
     })
   }
