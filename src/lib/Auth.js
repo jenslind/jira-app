@@ -29,7 +29,7 @@ class Auth {
 
   static getAuth(cb) {
     storage.get('authSettings', (err, settings) => {
-      if (!settings.length || err) return cb(false)
+      if (!Object.keys(settings).length || err) return cb(false)
       const pass = keytar.getPassword('Minira', settings.user)
       if (!pass) return cb(false)
 
