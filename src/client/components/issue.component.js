@@ -1,6 +1,7 @@
 import { Component, View } from 'angular2/core'
 import { FormBuilder, Validators } from 'angular2/common'
 import { RouteParams } from 'angular2/router'
+import { ipcRenderer } from 'electron'
 import JiraService from '../services/jira.service'
 import NavService from '../services/nav.service'
 import Suggest from './suggest.component'
@@ -20,6 +21,7 @@ export default class IssueComponent {
     this.issue = {}
     this.assignable = []
     this.fb = fb
+    this.hideTransitions = true
 
     nav.show('settings').show('issues')
   }
@@ -33,26 +35,35 @@ export default class IssueComponent {
   }
 
   assignUser() {
-    if (!this.assignForm.status === 'INVALID') return
+    if (!this.assignForm.valid) return
     const user = this.assignForm.controls.assigned.value
+    if (user === this.issue.fields.assignee.name) return
     this.jira.assignUser(this.issue.self, user)
   }
 
-  getStatuses() {
-    let statuses = []
-    for (let i, len = this.statuses.length; i < len; i++) {
-      if (this.statuses[i].id === this.issuetype.id) {
-        statuses = this.statuses[i].statuses
+  getPossibleTransitions() {
+    let transitions = []
+    let len = this.allTransitions.length
+    for (let i = 0; i < len; i++) {
+      if (this.allTransitions[i].to.id !== this.issue.fields.status.id) {
+        transitions.push(this.allTransitions[i])
       }
     }
-    return statuses
+    return transitions
+  }
+
+  doTransition(iId, t) {
+    this.jira.doTransition(iId, t.id)
+    this.issue.fields.status = t.to
+    this.transitions = this.getPossibleTransitions()
   }
 
   ngOnInit() {
     this.jira.issue$.subscribe(issue => this.issue = issue)
     this.jira.getIssue(this.params.issueId)
     this.assignable = this.jira.getAssignable(this.issue.key)
-    this.statuses = this.jira.getStatuses(this.issue.fields.project.id)
+    this.allTransitions = this.jira.getTransitions(this.issue.key).transitions
+    this.transitions = this.getPossibleTransitions()
 
     this.assignForm = this.fb.group({
       assigned: [this.issue.fields.assignee.name, Validators.required]

@@ -1,0 +1,29 @@
+@import 'src/client/scss/utils/_colors';
+
+.label {
+  background: #CCCCCC;
+  color: #333333;
+  border-radius: 2px;
+  text-transform: uppercase;
+  font-size: 1rem;
+
+  &.blue-gray {
+    background: #4A6785;
+    color: $color-white;
+  }
+
+  &.yellow {
+    background: #FFD351;
+    color: #594300;
+  }
+
+  &.medium-gray {
+    background: #CCCCCC;
+    color: #333333;
+  }
+
+  &.green {
+    background: #14892c;
+    color: $color-white;
+  }
+}

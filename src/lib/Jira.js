@@ -70,9 +70,9 @@ class Jira {
       })
   }
 
-  getStatuses(projectId) {
+  getTransitions(issueId) {
     let self = this
-    return got(this._getBaseUrl() + '/project/' + projectId + '/statuses',
+    return got(this._getBaseUrl() + '/issue/' + issueId + '/transitions',
       {
         auth: self._getAuth(),
         json: true
@@ -80,6 +80,17 @@ class Jira {
       .then((res) => {
         return res.body
       })
+  }
+
+  transition(issueId, transitionId) {
+    let self = this
+    return got.post(this._getBaseUrl() + '/issue/' + issueId + '/transitions', {
+      auth: self._getAuth(),
+      body: '{ "transition": { "id":' + transitionId + '} }',
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
   }
 
 }

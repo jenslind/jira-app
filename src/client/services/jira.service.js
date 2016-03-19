@@ -39,8 +39,12 @@ export default class JiraService {
     ipcRenderer.send('assignUser', {issue: issue, user: user})
   }
 
-  getStatuses(projectId) {
-    return ipcRenderer.sendSync('getStatuses', projectId)
+  getTransitions(issueId) {
+    return ipcRenderer.sendSync('getTransitions', issueId)
+  }
+
+  doTransition(issueId, transitionId) {
+    ipcRenderer.send('doTransition', {issueId, transitionId})
   }
 
   isAuthed() {

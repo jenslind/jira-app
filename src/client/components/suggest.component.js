@@ -15,6 +15,7 @@ export default class Suggest {
 
   ngOnInit() {
     this.suggest = this.control.value
+    this.currentValue = this.control.value
   }
 
   getSuggestion(event) {
@@ -30,10 +31,11 @@ export default class Suggest {
 
     if (this.suggestFound) {
       this.suggest = this.suggestFound
-      if (event.which === enterKey) event.target.value = this.suggest
     } else {
-      this.suggest = ''
+      this.suggest = this.currentValue
     }
+
+    if (event.which === enterKey) event.target.value = this.suggest
 
     this.cdr.detectChanges()
   }

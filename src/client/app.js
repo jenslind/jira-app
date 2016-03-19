@@ -11,6 +11,7 @@ import './scss/base/_base'
 import './scss/layout/_frame'
 import './scss/elements/_logo'
 import './scss/components/_btn'
+import './scss/components/_labels'
 
 @Component({
   selector: 'jira-app'

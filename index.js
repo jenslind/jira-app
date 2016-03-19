@@ -40,9 +40,13 @@ mb.on('ready', () => {
     jira.assignUser(data.issue, data.user)
   })
 
-  ipc.on('getStatuses', (event, projectId) => {
-    jira.getStatuses(projectId)
-      .then(statuses => event.returnValue = statuses)
+  ipc.on('getTransitions', (event, issueId) => {
+    jira.getTransitions(issueId)
+      .then(transitions => event.returnValue = transitions)
+  })
+
+  ipc.on('doTransition', (event, data) => {
+    jira.transition(data.issueId, data.transitionId)
   })
 
   ipc.on('isAuthed', (event) => {

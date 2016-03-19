@@ -24,8 +24,18 @@
 
   <div class="issue__footer">
     <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
-      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned" [value]="issue.fields.reporter.name"></suggest>
+      <label class="issue__footer__label">Assignee</label>
+      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned" [value]="issue.fields.assignee.name"></suggest>
       <input type="submit">
     </form>
+
+    <form class="issue__transition">
+      <button class="label" [ngClass]="issue.fields.status.statusCategory.colorName" (click)="hideTransitions = !hideTransitions">{{issue.fields.status.name}}</button>
+    </form>
+
+    <div class="issue__transitions" [hidden]="hideTransitions">
+      <label class="issue__footer__label">Status</label>
+      <button *ngFor="#transition of transitions" (click)="doTransition(issue.id, transition)" class="label" [ngClass]="transition.to.statusCategory.colorName">{{transition.name}}</button>
+    </div>
   </div>
 </div>
