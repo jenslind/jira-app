@@ -17,8 +17,14 @@ export default class IssuesComponent {
     this.jira = jira
     this.issues = []
     this.hideZero = true
+    this.hideLoading = true
 
     nav.show('settings').hide('issues')
+  }
+
+  fillLoad (event) {
+    this.loadingPosition = 'top: ' + (event.clientY - 50) + 'px; left: ' + event.clientX + 'px;'
+    this.hideLoading = false
   }
 
   ngOnInit() {

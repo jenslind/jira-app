@@ -11,6 +11,7 @@ export default class JiraService {
     this.zone = zone
 
     this.onIssues()
+    this.onIssue()
   }
 
   getIssues(jql) {
@@ -27,12 +28,26 @@ export default class JiraService {
   }
 
   getIssue(id) {
-    let issue = ipcRenderer.sendSync('getIssue', id)
-    this.issue.next(issue)
+    ipcRenderer.send('getIssue', id)
   }
 
-  getAssignable(issueId) {
-    return ipcRenderer.sendSync('getAssignable', issueId)
+  onIssue() {
+    let self = this
+    ipcRenderer.on('issue', (event, issue) => {
+      self.zone.run(() => {
+        self.issue.next(issue)
+      })
+    })
+  }
+
+  getAssignable(issueId, cb) {
+    let self = this
+    ipcRenderer.send('getAssignable', issueId)
+    ipcRenderer.on('assignable', (event, data) => {
+      self.zone.run(() => {
+        cb(data)
+      })
+    })
   }
 
   assignUser(issue, user) {

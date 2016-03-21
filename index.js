@@ -15,7 +15,7 @@ let jira = null
 
 mb.on('ready', () => {
   // Open dev-tools
-  mb.window.openDevTools();
+  mb.window.openDevTools()
 
   // Get many issues
   ipc.on('getIssues', (event, jql) => {
@@ -26,13 +26,13 @@ mb.on('ready', () => {
   // Get a specific jira issue
   ipc.on('getIssue', (event, id) => {
     jira.getIssue(id)
-      .then(issue => event.returnValue = issue)
+      .then(issue => mb.window.webContents.send('issue', issue))
   })
 
   // Get assignable users to a issue
   ipc.on('getAssignable', (event, issueId) => {
     jira.getAssignable(issueId)
-      .then(assignable => event.returnValue = assignable)
+      .then(assignable => mb.window.webContents.send('assignable', assignable))
   })
 
   // Assign user to a issue

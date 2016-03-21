@@ -1,6 +1,7 @@
-import { Component, View } from 'angular2/core'
+import { Component, View, ComponentInstruction } from 'angular2/core'
 import { FormBuilder, Validators } from 'angular2/common'
-import { RouteParams } from 'angular2/router'
+import { RouteParams, CanActivate } from 'angular2/router'
+import { appInjector } from '../app.injector'
 import { ipcRenderer } from 'electron'
 import JiraService from '../services/jira.service'
 import NavService from '../services/nav.service'
@@ -14,11 +15,22 @@ import '../scss/modules/_issue'
   directives: [Suggest],
   template: require('../templates/issue.template')
 })
+@CanActivate((next: ComponentInstruction) => {
+  let jira = appInjector().get(JiraService)
+  jira.getIssue(next.params.issueId)
+
+  return new Promise((resolve, reject) => {
+    jira.issue$.subscribe(issue => {
+      jira.currentIssue = issue
+      resolve(true)
+    })
+  })
+})
 export default class IssueComponent {
   constructor(jira: JiraService, routeParams: RouteParams, fb: FormBuilder, nav: NavService) {
     this.jira = jira
     this.params = routeParams.params
-    this.issue = {}
+    this.issue = this.jira.currentIssue
     this.assignable = []
     this.fb = fb
     this.hideTransitions = true
@@ -43,10 +55,10 @@ export default class IssueComponent {
 
   getPossibleTransitions() {
     let transitions = []
-    let len = this.allTransitions.length
+    let len = this.issue.transitions.length
     for (let i = 0; i < len; i++) {
-      if (this.allTransitions[i].to.id !== this.issue.fields.status.id) {
-        transitions.push(this.allTransitions[i])
+      if (this.issue.transitions[i].to.id !== this.issue.fields.status.id) {
+        transitions.push(this.issue.transitions[i])
       }
     }
     return transitions
@@ -59,10 +71,11 @@ export default class IssueComponent {
   }
 
   ngOnInit() {
-    this.jira.issue$.subscribe(issue => this.issue = issue)
-    this.jira.getIssue(this.params.issueId)
-    this.assignable = this.jira.getAssignable(this.issue.key)
-    this.allTransitions = this.jira.getTransitions(this.issue.key).transitions
+    let self = this
+    this.jira.getAssignable(this.issue.key, (data) => {
+      self.assignable = data
+    })
+
     this.transitions = this.getPossibleTransitions()
 
     this.assignForm = this.fb.group({

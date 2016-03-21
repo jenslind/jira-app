@@ -1,6 +1,7 @@
 import 'zone.js/build/lib/browser/zone-microtask'
 import 'reflect-metadata'
-import { Component, View, provide } from 'angular2/core'
+import { appInjector } from './app.injector'
+import { Component, View, provide, ComponentRef } from 'angular2/core'
 import { RouteConfig, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, RouterLink } from 'angular2/router'
 import { AuthRouterOutlet } from './directives/authRouterOutlet.directive'
 import { bootstrap } from 'angular2/platform/browser'
@@ -36,4 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
     JiraService,
     NavService
   ])
+  .then((appRef: ComponentRef) => {
+    appInjector(appRef.injector)
+  })
 })
