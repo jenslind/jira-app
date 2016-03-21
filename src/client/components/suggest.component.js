@@ -4,7 +4,7 @@ import '../scss/modules/_suggest'
 @Component({
   selector: 'suggest',
   inputs: ['haystack', 'control', 'value'],
-  template: `<input type="text" class="suggest__input" (keyup)="getSuggestion($event)" [value]="value">
+  template: `<input type="text" class="suggest__input" (keyup)="getSuggestion($event)" (blur)="fixValue($event)" [value]="value">
   <input type="text" class="suggest__suggestion" [(ngModel)]="suggest" [ngFormControl]="control">`
 })
 export default class Suggest {
@@ -32,11 +32,19 @@ export default class Suggest {
     if (this.suggestFound) {
       this.suggest = this.suggestFound
     } else {
-      this.suggest = this.currentValue
+      this.suggest = null
     }
 
-    if (event.which === enterKey) event.target.value = this.suggest
+    if (event.which === enterKey) {
+      event.target.value = this.suggest || this.currentValue
+      this.currentValue = this.suggest || this.currentValue
+    }
 
     this.cdr.detectChanges()
+  }
+
+  fixValue(event) {
+    event.target.value = this.currentValue
+    this.suggest = this.currentValue
   }
 }
