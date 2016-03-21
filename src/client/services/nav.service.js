@@ -1,21 +1,21 @@
 export default class NavService {
-  constructor() {
+  constructor () {
     this.button = {}
     this.button.settings = true
     this.button.issues = true
   }
 
-  show(btn) {
+  show (btn) {
     this.button[btn] = false
     return this
   }
 
-  hide(btn) {
+  hide (btn) {
     this.button[btn] = true
     return this
   }
 
-  get() {
+  get () {
     return this.button
   }
 }

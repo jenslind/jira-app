@@ -1,4 +1,4 @@
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const webpack = require('webpack')
 
 const config = {
@@ -37,6 +37,6 @@ const config = {
   },
   devtool: '#inline-source-map',
   target: 'electron'
-};
+}
 
-module.exports = config;
+module.exports = config

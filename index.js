@@ -20,19 +20,19 @@ mb.on('ready', () => {
   // Get many issues
   ipc.on('getIssues', (event, jql) => {
     jira.getIssues(jql)
-      .then(issues => mb.window.webContents.send('issues', issues))
+      .then((issues) => mb.window.webContents.send('issues', issues))
   })
 
   // Get a specific jira issue
   ipc.on('getIssue', (event, id) => {
     jira.getIssue(id)
-      .then(issue => mb.window.webContents.send('issue', issue))
+      .then((issue) => mb.window.webContents.send('issue', issue))
   })
 
   // Get assignable users to a issue
   ipc.on('getAssignable', (event, issueId) => {
     jira.getAssignable(issueId)
-      .then(assignable => mb.window.webContents.send('assignable', assignable))
+      .then((assignable) => mb.window.webContents.send('assignable', assignable))
   })
 
   // Assign user to a issue
@@ -42,7 +42,7 @@ mb.on('ready', () => {
 
   ipc.on('getTransitions', (event, issueId) => {
     jira.getTransitions(issueId)
-      .then(transitions => event.returnValue = transitions)
+      .then((transitions) => event.returnValue = transitions)
   })
 
   ipc.on('doTransition', (event, data) => {
@@ -50,7 +50,7 @@ mb.on('ready', () => {
   })
 
   ipc.on('isAuthed', (event) => {
-    Auth.getAuth(success => {
+    Auth.getAuth((success) => {
       if (!jira && success) jira = new Jira(success)
       event.returnValue = success
     })
@@ -58,10 +58,10 @@ mb.on('ready', () => {
 
   ipc.on('auth', (event, info) => {
     Auth.auth(info)
-      .then(res => {
+      .then((res) => {
         event.returnValue = true
       })
-      .catch(err => {
+      .catch(() => {
         event.returnValue = false
       })
   })
@@ -78,7 +78,7 @@ mb.on('ready', () => {
 
   ipc.on('getSettings', (event) => {
     storage.get('settings', (err, settings) => {
-      event.returnValue = settings
+      event.returnValue = (!err) ? settings : null
     })
   })
 })

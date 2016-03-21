@@ -6,16 +6,16 @@ const got = require('got')
 
 class Auth {
 
-  static test(info) {
+  static test (info) {
     return got(info.baseUrl + '/rest/api/2/myself', {
       auth: info.user + ':' + info.pass,
       json: true
     })
   }
 
-  static auth(info) {
+  static auth (info) {
     return Auth.test(info)
-      .then(res => {
+      .then((res) => {
         storage.set('authSettings', {
           baseUrl: info.baseUrl,
           user: info.user,
@@ -27,7 +27,7 @@ class Auth {
       })
   }
 
-  static getAuth(cb) {
+  static getAuth (cb) {
     storage.get('authSettings', (err, settings) => {
       if (!Object.keys(settings).length || err) return cb(false)
       const pass = keytar.getPassword('Minira', settings.user)
@@ -42,7 +42,7 @@ class Auth {
     })
   }
 
-  static unAuth(cb) {
+  static unAuth (cb) {
     storage.get('authSettings', (err, settings) => {
       storage.remove('authSettings', (err) => {
         keytar.deletePassword('Minira', settings.user)
