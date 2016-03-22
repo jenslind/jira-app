@@ -2,6 +2,7 @@ import { Component, View } from 'angular2/core'
 import { FormBuilder, Validators } from 'angular2/common'
 import { Router } from 'angular2/router'
 import JiraService from '../services/jira.service'
+import NavService from '../services/nav.service'
 import { ipcRenderer } from 'electron'
 import '../scss/modules/_auth'
 
@@ -12,7 +13,7 @@ import '../scss/modules/_auth'
   template: require('../templates/auth.template')
 })
 export default class AuthComponent {
-  constructor (jira: JiraService, fb: FormBuilder, router: Router) {
+  constructor (jira: JiraService, fb: FormBuilder, router: Router, nav: NavService) {
     this.fb = fb
     this.router = router
     this.authForm = this.fb.group({
@@ -22,6 +23,8 @@ export default class AuthComponent {
     })
 
     this.hideLoading = true
+
+    nav.hide('settings').hide('issues')
   }
 
   auth () {
