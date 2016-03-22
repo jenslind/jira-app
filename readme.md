@@ -9,7 +9,7 @@ It is not a replacement for JIRA:s web interface, the goal is to list a number o
 
 ## The name?
 
-Jira is coming from the Japanese word for `Godzilla`, `Gojira`. `Minira` is the Japanese word for `[Minilla](https://en.wikipedia.org/wiki/Minilla)`, Godzillas adopted son. :fireworks:
+Jira is coming from the Japanese word for `Godzilla`, `Gojira`. `Minira` is the Japanese word for [Minilla](https://en.wikipedia.org/wiki/Minilla), Godzillas adopted son. :fireworks:
 
 ## Development
 
