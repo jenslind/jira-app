@@ -1,8 +1,8 @@
 'use strict'
 
 const menubar = require('menubar')
-const Jira = require('./src/lib/Jira.js')
-const Auth = require('./src/lib/Auth.js')
+const Jira = require('./lib/Jira.js')
+const Auth = require('./lib/Auth.js')
 const ipc = require('electron').ipcMain
 const storage = require('electron-json-storage')
 
