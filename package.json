@@ -6,7 +6,7 @@
   "scripts": {
     "test": "standard",
     "postinstall": "electron-rebuild",
-    "build": "npm test && webpack && electron-packager ./ Minira --platform=darwin --arch=x64 --version=0.37.2 --out=./build --overwrite --ignore=src --prune"
+    "build": "npm test && webpack && electron-packager ./ Minira --platform=darwin --arch=x64 --version=0.37.2 --out=./build --overwrite --ignore=src|media --prune"
   },
   "repository": {
     "type": "git",
