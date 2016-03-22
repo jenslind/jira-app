@@ -20,6 +20,11 @@
   z-index: 6;
   padding-left: 10px;
   padding-right: 10px;
+  box-shadow: 0 2px 3px darken($color-bg-blue, 10%);
+
+  &--no-shadow {
+    box-shadow: none;
+  }
 
   &:before {
     bottom: 100%;

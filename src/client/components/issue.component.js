@@ -34,7 +34,7 @@ export default class IssueComponent {
     this.fb = fb
     this.hideTransitions = true
 
-    nav.show('settings').show('issues')
+    nav.show('settings').show('issues').show('shadow')
   }
 
   getAssignable () {

@@ -24,7 +24,7 @@ export default class AuthComponent {
 
     this.hideLoading = true
 
-    nav.hide('settings').hide('issues')
+    nav.hide('settings').hide('issues').hide('shadow')
   }
 
   auth () {

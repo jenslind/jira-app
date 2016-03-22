@@ -22,7 +22,7 @@ export default class SettingsComponent {
       issueQuery: [this.settings.issueQuery]
     })
 
-    nav.show('settings').show('issues')
+    nav.show('settings').show('issues').show('shadow')
   }
 
   unlink () {

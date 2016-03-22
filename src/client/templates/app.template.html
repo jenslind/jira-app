@@ -1,5 +1,5 @@
 <div class="frame">
-  <div class="frame__header">
+  <div class="frame__header" [ngClass]="{'frame__header--no-shadow': buttons.shadow}">
     <div class="frame__header__button_wrapper">
       <button [routerLink]="['IssuesComponent']" class="frame__header__button" [hidden]="buttons.issues">Issues</button>
     </div>

@@ -3,6 +3,7 @@ export default class NavService {
     this.button = {}
     this.button.settings = true
     this.button.issues = true
+    this.button.shadow = true
   }
 
   show (btn) {

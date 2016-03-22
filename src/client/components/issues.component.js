@@ -19,7 +19,7 @@ export default class IssuesComponent {
     this.hideZero = true
     this.hideLoading = true
 
-    nav.show('settings').hide('issues')
+    nav.show('settings').hide('issues').show('shadow')
   }
 
   fillLoad (event) {
