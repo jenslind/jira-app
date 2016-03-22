@@ -1,5 +1,5 @@
-<p align="center">
-  <img style="margin: 30px 0 50px 0;" src="https://raw.githubusercontent.com/jenslind/minira/master/logo.png">
+<p align="center" style="margin: 30px 0 50px 0;">
+  <img src="https://raw.githubusercontent.com/jenslind/minira/master/logo.png">
 </p>
 
 > Menubar app for [JIRA](https://www.atlassian.com/software/jira)
