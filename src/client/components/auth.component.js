@@ -12,7 +12,7 @@ import '../scss/modules/_auth'
   template: require('../templates/auth.template')
 })
 export default class AuthComponent {
-  constructor(jira: JiraService, fb: FormBuilder, router: Router) {
+  constructor (jira: JiraService, fb: FormBuilder, router: Router) {
     this.fb = fb
     this.router = router
     this.authForm = this.fb.group({
@@ -24,7 +24,7 @@ export default class AuthComponent {
     this.hideLoading = true
   }
 
-  auth() {
+  auth () {
     this.hideLoading = false
 
     let self = this

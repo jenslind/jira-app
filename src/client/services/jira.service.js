@@ -3,7 +3,7 @@ import { ipcRenderer } from 'electron'
 import { NgZone } from 'angular2/core'
 
 export default class JiraService {
-  constructor(zone: NgZone) {
+  constructor (zone: NgZone) {
     this.issues = new Subject()
     this.issue = new Subject()
     this.issues$ = this.issues.asObservable()
@@ -14,11 +14,11 @@ export default class JiraService {
     this.onIssue()
   }
 
-  getIssues(jql) {
+  getIssues (jql) {
     ipcRenderer.send('getIssues', jql)
   }
 
-  onIssues() {
+  onIssues () {
     let self = this
     ipcRenderer.on('issues', (event, issues) => {
       self.zone.run(() => {
@@ -27,11 +27,11 @@ export default class JiraService {
     })
   }
 
-  getIssue(id) {
+  getIssue (id) {
     ipcRenderer.send('getIssue', id)
   }
 
-  onIssue() {
+  onIssue () {
     let self = this
     ipcRenderer.on('issue', (event, issue) => {
       self.zone.run(() => {
@@ -40,7 +40,7 @@ export default class JiraService {
     })
   }
 
-  getAssignable(issueId, cb) {
+  getAssignable (issueId, cb) {
     let self = this
     ipcRenderer.send('getAssignable', issueId)
     ipcRenderer.on('assignable', (event, data) => {
@@ -50,19 +50,19 @@ export default class JiraService {
     })
   }
 
-  assignUser(issue, user) {
+  assignUser (issue, user) {
     ipcRenderer.send('assignUser', {issue: issue, user: user})
   }
 
-  getTransitions(issueId) {
+  getTransitions (issueId) {
     return ipcRenderer.sendSync('getTransitions', issueId)
   }
 
-  doTransition(issueId, transitionId) {
+  doTransition (issueId, transitionId) {
     ipcRenderer.send('doTransition', {issueId, transitionId})
   }
 
-  isAuthed() {
+  isAuthed () {
     return ipcRenderer.sendSync('isAuthed')
   }
 }

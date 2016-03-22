@@ -13,7 +13,7 @@ import '../scss/modules/_issues'
   template: require('../templates/issues.template')
 })
 export default class IssuesComponent {
-  constructor(jira: JiraService, nav: NavService) {
+  constructor (jira: JiraService, nav: NavService) {
     this.jira = jira
     this.issues = []
     this.hideZero = true
@@ -27,7 +27,7 @@ export default class IssuesComponent {
     this.hideLoading = false
   }
 
-  ngOnInit() {
+  ngOnInit () {
     let self = this
     this.jira.issues$.subscribe(issues => {
       self.issues = issues

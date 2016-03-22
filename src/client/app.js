@@ -24,7 +24,7 @@ import './scss/components/_loading'
 })
 @RouteConfig(appRoutes)
 class JiraApp {
-  constructor(nav: NavService) {
+  constructor (nav: NavService) {
     this.nav = nav
     this.buttons = this.nav.get()
   }

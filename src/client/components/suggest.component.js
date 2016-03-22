@@ -8,17 +8,17 @@ import '../scss/modules/_suggest'
   <input type="text" class="suggest__suggestion" [(ngModel)]="suggest" [ngFormControl]="control">`
 })
 export default class Suggest {
-  constructor(cdr: ChangeDetectorRef) {
+  constructor (cdr: ChangeDetectorRef) {
     this.cdr = cdr
     this.suggest = ''
   }
 
-  ngOnInit() {
+  ngOnInit () {
     this.suggest = this.control.value
     this.currentValue = this.control.value
   }
 
-  getSuggestion(event) {
+  getSuggestion (event) {
     const enterKey = 13
 
     let regex = new RegExp('^' + event.target.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i')
@@ -43,7 +43,7 @@ export default class Suggest {
     this.cdr.detectChanges()
   }
 
-  fixValue(event) {
+  fixValue (event) {
     event.target.value = this.currentValue
     this.suggest = this.currentValue
   }

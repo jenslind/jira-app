@@ -41,7 +41,7 @@ class Jira {
       auth: self._getAuth(),
       json: true
     })
-    .then(res => {
+    .then((res) => {
       return res.body
     })
   }
