@@ -29,7 +29,7 @@ export default class IssuesComponent {
 
   ngOnInit () {
     let self = this
-    this.jira.issues$.subscribe(issues => {
+    this.jira.issues$.subscribe((issues) => {
       self.issues = issues
       if (!issues.length) self.hideZero = false
     })

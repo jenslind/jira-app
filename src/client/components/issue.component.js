@@ -19,7 +19,7 @@ import '../scss/modules/_issue'
   jira.getIssue(next.params.issueId)
 
   return new Promise((resolve, reject) => {
-    jira.issue$.subscribe(issue => {
+    jira.issue$.subscribe((issue) => {
       jira.currentIssue = issue
       resolve(true)
     })

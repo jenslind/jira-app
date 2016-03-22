@@ -21,7 +21,7 @@ export default class Suggest {
   getSuggestion (event) {
     const enterKey = 13
 
-    let regex = new RegExp('^' + event.target.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, "\\$&"), 'i')
+    let regex = new RegExp('^' + event.target.value.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&'), 'i')
     this.suggestFound = false
     for (let i = 0, len = this.haystack.length; i < len; i++) {
       if (regex.test(this.haystack[i]) && event.target.value) {

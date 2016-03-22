@@ -44,7 +44,9 @@ class Auth {
 
   static unAuth (cb) {
     storage.get('authSettings', (err, settings) => {
+      if (err) return cb(false)
       storage.remove('authSettings', (err) => {
+        if (err) return cb(false)
         keytar.deletePassword('Minira', settings.user)
         cb(true)
       })

@@ -42,7 +42,9 @@ mb.on('ready', () => {
 
   ipc.on('getTransitions', (event, issueId) => {
     jira.getTransitions(issueId)
-      .then((transitions) => event.returnValue = transitions)
+      .then((transitions) => {
+        event.returnValue = transitions
+      })
   })
 
   ipc.on('doTransition', (event, data) => {
