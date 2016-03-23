@@ -3,6 +3,7 @@
 const menubar = require('menubar')
 const Jira = require('./lib/Jira.js')
 const Auth = require('./lib/Auth.js')
+const autoUpdate = require('./lib/update.js')
 const ipc = require('electron').ipcMain
 const storage = require('electron-json-storage')
 
@@ -14,8 +15,8 @@ const mb = menubar({
 let jira = null
 
 mb.on('ready', () => {
-  // Open dev-tools
-  mb.window.openDevTools()
+  // Auto-update
+  autoUpdate(mb.app.getVersion())
 
   // Get many issues
   ipc.on('getIssues', (event, jql) => {
