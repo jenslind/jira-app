@@ -1,3 +1,4 @@
+os: osx
 language: node_js
 node_js:
   - '4.3'
@@ -10,11 +11,3 @@ deploy:
 env:
   global:
     secure: OI7deuMVuhQMunUY4DKzr8TY42etd1Ojreu+f4c+tOs/CZweYqCSWTXIv/X5GGzej1P87YDeK+Gk0NAQFzcbH1oSB8G4GMJpPrwGeCfoOsLXu6Q68UmReTLChfz0bG/SeH9Awd16VjiUoR8KflnxdcukR95Nl9XJSuW8L57so8Ae13IOJFxJRjP/Zm+ZhDzj6eE7b1SeQpqFOYqf+6ngmVSkJUUl96txbljRnLBF4V9vuXYY2nuFSBBiXdC+ihQu+dv7/Dz+Ygk/BPPwzqplrBNPSWwQ2Uth8k6xD+5KRLvgvpccb289JFbl4ElFN20PwceXssVeXFcR/8hcAeSh1ci8BKg70/eO2UY0x60Qskn8+CqvEdt1bQsaEXCCFJbhX8yBeT7XK5kVfpMFNp0fXIMxlLM+LYmD/bU2x8/eWf/dJRPvE2DIQth7Z5H9DJiKvcbCBnld65QKrzBfN9i0sm+Ut+xsjmjJDs8eswwsLdGTJ6VqZkCJ++oAADX0Lao93PnU2iIVbfD9hphUVF2RAgH1op45O5BobElHoSXLR4zOv6uhd8pUJ18cyW7FtOVLMTXZtIcFMT1z2a1j8wx+lZhwLYXPyD0r5dASCt0pAb4EzbDhmEC9V4VOEkkjjaxusTECKUxVWf/dQH6M5H880y03RHeH5ZjV//gHornzm9g=
-  matrix:
-    - CXX=g++-4.8
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-    packages:
-      - g++-4.8
