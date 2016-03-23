@@ -4,6 +4,8 @@
 
 > Menubar app for [JIRA](https://www.atlassian.com/software/jira)
 
+[![Build Status](https://travis-ci.org/jenslind/minira.svg?branch=master)](https://travis-ci.org/jenslind/minira)
+
 Minira is built on top of [Electron](http://electron.atom.io/), [Menubar](https://github.com/maxogden/menubar) and [Angular 2](https://angular.io/).
 It is not a replacement for JIRA:s web interface, the goal is to list a number of important issues for the moment and have easy access to edit them.
 
