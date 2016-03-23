@@ -29,13 +29,17 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  padding: 20px 0;
 }
 
 .issue__header__avatars__avatar {
   width: 50%;
   font-size: 1.2rem;
   text-transform: uppercase;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  margin: 0 5px;
 
   span {
     color: darken($color-bg-blue-text, 5%);
