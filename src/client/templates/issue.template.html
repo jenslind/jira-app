@@ -25,7 +25,7 @@
   <div class="issue__footer">
     <form [ngFormModel]="assignForm" (ngSubmit)="assignUser()">
       <label class="issue__footer__label">Assignee</label>
-      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned" [value]="issue.fields.assignee.name"></suggest>
+      <suggest [haystack]="getAssignable()" [control]="assignForm.controls.assigned" [value]="(issue.fields.assignee) ? issue.fields.assignee.name : ''"></suggest>
       <input type="submit">
     </form>
 

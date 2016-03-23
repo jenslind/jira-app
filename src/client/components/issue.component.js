@@ -77,8 +77,9 @@ export default class IssueComponent {
 
     this.transitions = this.getPossibleTransitions()
 
+    let assignee = (this.issue.fields.assignee) ? this.issue.fields.assignee.name : ''
     this.assignForm = this.fb.group({
-      assigned: [this.issue.fields.assignee.name, Validators.required]
+      assigned: [assignee, Validators.required]
     })
   }
 }
