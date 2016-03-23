@@ -7,6 +7,8 @@
 Minira is built on top of [Electron](http://electron.atom.io/), [Menubar](https://github.com/maxogden/menubar) and [Angular 2](https://angular.io/).
 It is not a replacement for JIRA:s web interface, the goal is to list a number of important issues for the moment and have easy access to edit them.
 
+![minira.app](https://raw.githubusercontent.com/jenslind/minira/master/media/minira.png)
+
 ## The name?
 
 Jira is coming from the Japanese word for `Godzilla`, `Gojira`. `Minira` is the Japanese word for [Minilla](https://en.wikipedia.org/wiki/Minilla), Godzillas adopted son. :fireworks:
