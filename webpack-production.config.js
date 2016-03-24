@@ -30,13 +30,22 @@ const config = {
   plugins: [
     new ExtractTextPlugin('bundle.css'),
     new webpack.IgnorePlugin(/vertx/),
-    new webpack.optimize.UglifyJsPlugin()
+    new webpack.optimize.UglifyJsPlugin({
+      mangle: false
+    })
   ],
   resolve: {
     extensions: ['', '.scss', '.js', '.html'],
     modulesDirectories: ['src', 'node_modules']
   },
-  target: 'electron'
+  target: 'electron',
+  htmlLoader: {
+    minimize: true,
+    removeAttributeQuotes: false,
+    caseSensitive: true,
+    customAttrSurround: [[/#/, /(?:)/], [/\*/, /(?:)/], [/\[?\(?/, /(?:)/]],
+    customAttrAssign: [/\)?\]?=/]
+  }
 }
 
 module.exports = config
