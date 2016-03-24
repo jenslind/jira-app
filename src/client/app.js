@@ -1,5 +1,3 @@
-import 'zone.js/build/lib/browser/zone-microtask'
-import 'reflect-metadata'
 import { appInjector } from './app.injector'
 import { Component, View, provide, ComponentRef } from 'angular2/core'
 import { RouteConfig, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, RouterLink } from 'angular2/router'
