@@ -42,6 +42,10 @@
     &::-webkit-input-placeholder {
       color: $color-white;
     }
+
+    &.auth__form__no-margin {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -54,6 +58,10 @@
   background: linear-gradient(to bottom, #80d44e, #47ae0e);
   font-size: 1.4rem;
   outline: 0;
+
+  &:hover {
+    background: linear-gradient(to bottom, lighten(#80d44e, 10%), lighten(#47ae0e, 10%));
+  }
 }
 
 .auth__loading {
@@ -73,4 +81,11 @@
     text-transform: uppercase;
     color: $color-white;
   }
+}
+
+.auth__form__description {
+  color: $color-white;
+  margin: 10px 0 15px;
+  font-style: italic;
+  width: 60%;
 }
