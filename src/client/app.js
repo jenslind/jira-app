@@ -1,3 +1,4 @@
+import 'angular2/bundles/angular2-polyfills'
 import { appInjector } from './app.injector'
 import { Component, View, provide, ComponentRef } from 'angular2/core'
 import { RouteConfig, ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy, RouterLink } from 'angular2/router'
