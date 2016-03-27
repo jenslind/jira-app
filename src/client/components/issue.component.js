@@ -48,7 +48,7 @@ export default class IssueComponent {
 
   assignUser () {
     if (!this.assignForm.valid) return
-    const user = this.assignForm.controls.assigned.value
+    const user = this.assignForm.controls.assigned.value.toLowerCase()
     if (user === this.issue.fields.assignee.name) return
     this.jira.assignUser(this.issue.self, user)
   }

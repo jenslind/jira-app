@@ -3,7 +3,6 @@ suggest {
   width: 200px;
   height: 40px;
   position: relative;
-  text-transform: lowercase;
 }
 
 .suggest__input {
@@ -16,6 +15,7 @@ suggest {
   font-size: 14px;
   position: relative;
   z-index: 2;
+  text-transform: lowercase;
 }
 
 .suggest__suggestion {
@@ -29,4 +29,5 @@ suggest {
   top: 0;
   left: 0;
   z-index: 1;
+  text-transform: lowercase;
 }
