@@ -6,6 +6,7 @@ import JiraService from '../services/jira.service'
 import NavService from '../services/nav.service'
 import Suggest from './suggest.component'
 import '../scss/modules/_issue'
+import { shell } from 'electron'
 
 @Component({
   selector: 'issue'
@@ -67,6 +68,14 @@ export default class IssueComponent {
     this.jira.doTransition(iId, t.id)
     this.issue.fields.status = t.to
     this.transitions = this.getPossibleTransitions()
+  }
+
+  openIssue () {
+    const URLParts = this.issue.self.split('/')
+    let issueURL = URLParts[0] + '//' + URLParts[2]
+    issueURL += '/projects/' + this.issue.fields.project.key
+    issueURL += '/issues/' + this.issue.key
+    shell.openExternal(issueURL)
   }
 
   ngOnInit () {

@@ -2,7 +2,7 @@
   <div class="issue__header">
     <div class="issue__header__top">
       <img [src]="issue.fields.issuetype.iconUrl">
-      <h1>{{issue.fields.summary}}</h1>
+      <h1 (click)="openIssue()">{{issue.fields.summary}}</h1>
       <div class="issue__priority"><img [src]="issue.fields.priority.iconUrl"></div>
     </div>
 
