@@ -6,7 +6,7 @@
   "scripts": {
     "test": "standard",
     "postinstall": "electron-rebuild",
-    "build": "npm test && webpack --config webpack-production.config.js && electron-packager ./ Minira --platform=darwin --arch=x64 --version=0.37.2 --app-version=$npm_package_version --out=./build --overwrite --ignore='^/media$' --ignore='^/build$' --ignore='^/src$' --ignore='^/node_modules/angular2$' --prune --icon=media/Icon.icns --sign='Jens Lind'",
+    "build": "npm test && webpack --config webpack-production.config.js && electron-packager ./ Minira --platform=darwin --arch=x64 --version=0.37.2 --app-version=$npm_package_version --out=./build --overwrite --ignore='^/media$' --ignore='^/build$' --ignore='^/src$' --ignore='^/node_modules/angular2$' --prune --icon=media/Icon.icns --sign='Jens Lind' --app-bundle-id=com.jenslind.minira",
     "release": "npm run build && electron-release --app=build/Minira-darwin-x64/Minira.app output=build/Minira-darwin-x64/Minira-osx-$npm_package_version.zip --token=$MINIRA_TOKEN"
   },
   "repository": {
