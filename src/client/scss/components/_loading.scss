@@ -1,3 +1,5 @@
+@import 'src/client/scss/utils/_colors';
+
 /**
  * Thanks George Hastings <3
  * http://codepen.io/georgehastings/pen/QyXeNR
@@ -19,7 +21,7 @@
     animation: fadeIn .5s;
     animation-delay: .2s;
     animation-fill-mode: forwards;
-    position: absolute;
+    position: fixed;
     left: 50%;
     margin-left: -8px;
     z-index: 10;
@@ -66,5 +68,62 @@
   }
   100% {
     opacity: 1;
+  }
+}
+
+// http://codepen.io/mrrocks/pen/EiplA <3
+
+.loading__material {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  &--add-comment {
+    background-color: darken($color-bg-blue, 10%);
+    z-index: 5;
+
+    .spinner {
+      margin-top: 15px;
+    }
+  }
+
+  .spinner {
+    animation: material-rotator 1.4s linear infinite;
+  }
+
+  .path {
+    stroke-dasharray: 187;
+    stroke-dashoffset: 0;
+    transform-origin: center;
+    animation: material-dash 1.4s ease-in-out infinite;
+    stroke: $color-bg-blue-text;
+  }
+}
+
+@keyframes material-rotator {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(270deg);
+  }
+}
+
+@keyframes material-dash {
+  0% {
+    stroke-dashoffset: 187;
+  }
+
+  50% {
+    stroke-dashoffset: (187/4);
+    transform:rotate(135deg);
+  }
+
+  100% {
+    stroke-dashoffset: 187;
+    transform:rotate(450deg);
   }
 }

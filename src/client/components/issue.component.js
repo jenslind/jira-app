@@ -6,6 +6,7 @@ import JiraService from '../services/jira.service'
 import NavService from '../services/nav.service'
 import Suggest from './suggest.component'
 import '../scss/modules/_issue'
+import '../scss/modules/_issue-comments'
 import { shell } from 'electron'
 
 @Component({
@@ -34,6 +35,9 @@ export default class IssueComponent {
     this.assignable = []
     this.fb = fb
     this.hideTransitions = true
+    this.hideComments = true
+    this.addingComment = false
+    this.comments = null
 
     nav.show('settings').show('issues').show('shadow')
   }
@@ -78,6 +82,32 @@ export default class IssueComponent {
     shell.openExternal(issueURL)
   }
 
+  showComments () {
+    this.jira.getComments(this.issue.key)
+
+    let self = this
+    this.comments = null
+    this.jira.comments$.subscribe((comments) => {
+      if (comments.comments) {
+        self.comments = comments.comments
+      } else {
+        self.comments.push(JSON.parse(comments))
+        self.addingComment = false
+        setTimeout(() => { document.querySelector('.issue__comments .issue__comment:last-child').scrollIntoView() }, 100)
+      }
+      self.hideComments = false
+    })
+  }
+
+  addComment () {
+    this.addingComment = true
+    let comment = this.commentForm.value
+    comment.issueKey = this.issue.key
+    comment.body = comment.body.replace(/\n/g, '\\n')
+    this.jira.addComment(comment)
+    this.commentForm.controls.body.updateValue('')
+  }
+
   ngOnInit () {
     let self = this
     this.jira.getAssignable(this.issue.key, (data) => {
@@ -90,5 +120,13 @@ export default class IssueComponent {
     this.assignForm = this.fb.group({
       assigned: [assignee, Validators.required]
     })
+
+    this.commentForm = this.fb.group({
+      body: ['', Validators.required]
+    })
+  }
+
+  _strAsDate (str) {
+    return new Date(str)
   }
 }

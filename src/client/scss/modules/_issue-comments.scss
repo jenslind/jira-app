@@ -1,0 +1,128 @@
+@import 'src/client/scss/utils/_colors';
+
+.issue__comments__wrapper {
+  background: rgba($color-bg-blue, .95);
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 40px;
+  padding: 15px;
+  padding-bottom: 75px;
+  z-index: 3;
+  font-size: 1.4rem;
+  opacity: 0;
+  display: none;
+
+  &.active {
+    display: block;
+    animation: fadeZoomIn .5s;
+    animation-fill-mode: forwards;
+  }
+
+  h2 {
+    margin-top: 0;
+  }
+}
+
+.issue__comments {
+  overflow-y: scroll;
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 60px;
+  top: 40px;
+  padding: 15px;
+}
+
+.issue__comments__show {
+  width: 35px;
+  height: 24px;
+  border-radius: 100%;
+  background: url('./graphics/comments.svg') center center no-repeat;
+  margin: 11px 5px 0;
+  transition: transform .2s;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}
+
+.issue__comments__hide {
+  position: fixed;
+  right: 10px;
+  top: 14px;
+  height: 25px;
+  border-radius: 3px;
+  background: darken($color-bg-blue, 10%);
+  z-index: 5;
+}
+
+.issue__comments__add {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+
+  textarea {
+    width: 80%;
+    padding: 5px;
+    float: left;
+    border: 0;
+    border-top: 1px solid darken($color-bg-blue, 10%);
+  }
+
+  button[type="submit"] {
+    width: 20%;
+    height: 60px;
+    background-color: darken($color-bg-blue, 10%);
+    color: $color-bg-blue-text;
+    transition: background-color .2s;
+    position: relative;
+
+    &:hover {
+      background-color: darken($color-bg-blue, 15%);
+    }
+
+    &.adding {
+      background-image: url('./graphics/spinn-loader.svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      font-size: 0;
+    }
+  }
+}
+
+.issue__comment {
+  margin-bottom: 15px;
+}
+
+.issue__comment__name {
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  margin-bottom: 5px;
+}
+
+.issue__comment__body {
+  background: $color-white;
+  border-radius: 5px;
+  padding: 10px;
+  box-shadow: 0 1px 3px darken($color-bg-blue, 10%);
+
+  p {
+    margin: 0;
+    margin-bottom: 10px;
+  }
+}
+
+@keyframes fadeZoomIn {
+  0% {
+    opacity: 0;
+    transform: scale(0);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}

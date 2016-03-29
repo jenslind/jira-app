@@ -29,6 +29,8 @@
       <input type="submit">
     </form>
 
+    <button class="issue__comments__show" (click)="showComments()"></button>
+
     <form class="issue__transition">
       <button class="label" [ngClass]="issue.fields.status.statusCategory.colorName" (click)="hideTransitions = !hideTransitions">{{issue.fields.status.name}}</button>
     </form>
@@ -37,5 +39,29 @@
       <label class="issue__footer__label">Status</label>
       <button *ngFor="#transition of transitions" (click)="doTransition(issue.id, transition)" class="label" [ngClass]="transition.to.statusCategory.colorName">{{transition.name}}</button>
     </div>
+  </div>
+
+  <div class="issue__comments__wrapper" [ngClass]="{'active': !hideComments }">
+    <h2>Comments</h2>
+    <button class="issue__comments__hide" (click)="hideComments = true">Close</button>
+
+    <div class="issue__comments">
+      <div *ngFor="#comment of comments" class="issue__comment">
+        <div class="issue__comment__name">{{comment.author.displayName}} - {{_strAsDate(comment.updated) | date: 'dd MMM - HH:mm'}}</div>
+        <div class="issue__comment__body" [innerHTML]="comment.renderedBody"></div>
+      </div>
+    </div>
+
+    <form [ngFormModel]="commentForm" class="issue__comments__add" (ngSubmit)="addComment()">
+      <textarea rows="3" placeholder="Comment.." ngControl="body"></textarea>
+      <button type="submit">
+        Add
+        <div class="loading__material loading__material--add-comment" [hidden]="!addingComment">
+          <svg class="spinner" width="30px" height="30px" viewBox="0 0 66 66" xmlns="http://www.w3.org/2000/svg">
+            <circle class="path" fill="none" stroke-width="6" stroke-linecap="round" cx="33" cy="33" r="30"></circle>
+          </svg>
+        </div>
+      </button>
+    </form>
   </div>
 </div>

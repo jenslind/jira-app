@@ -30,6 +30,16 @@ mb.on('ready', () => {
       .then((issue) => mb.window.webContents.send('issue', issue))
   })
 
+  ipc.on('getComments', (event, id) => {
+    jira.getComments(id)
+      .then((comments) => mb.window.webContents.send('comments', comments))
+  })
+
+  ipc.on('addComment', (event, comment) => {
+    jira.addComment(comment)
+      .then((newComment) => mb.window.webContents.send('commentAdded', newComment))
+  })
+
   // Get assignable users to a issue
   ipc.on('getAssignable', (event, issueId) => {
     jira.getAssignable(issueId)

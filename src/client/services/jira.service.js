@@ -6,12 +6,15 @@ export default class JiraService {
   constructor (zone: NgZone) {
     this.issues = new Subject()
     this.issue = new Subject()
+    this.comments = new Subject()
     this.issues$ = this.issues.asObservable()
     this.issue$ = this.issue.asObservable()
+    this.comments$ = this.comments.asObservable()
     this.zone = zone
 
     this.onIssues()
     this.onIssue()
+    this.onComments()
   }
 
   getIssues (jql) {
@@ -38,6 +41,29 @@ export default class JiraService {
         self.issue.next(issue)
       })
     })
+  }
+
+  getComments (issueId) {
+    ipcRenderer.send('getComments', issueId)
+  }
+
+  onComments () {
+    let self = this
+    ipcRenderer.on('comments', (event, comments) => {
+      self.zone.run(() => {
+        self.comments.next(comments)
+      })
+    })
+
+    ipcRenderer.on('commentAdded', (event, newComment) => {
+      self.zone.run(() => {
+        self.comments.next(newComment)
+      })
+    })
+  }
+
+  addComment (comment) {
+    ipcRenderer.send('addComment', comment)
   }
 
   getAssignable (issueId, cb) {
