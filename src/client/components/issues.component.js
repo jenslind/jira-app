@@ -17,7 +17,7 @@ export default class IssuesComponent {
     this.jira = jira
     this.issues = []
     this.hideZero = true
-    this.hideLoading = true
+    this.hideLoading = false
 
     nav.show('settings').hide('issues').show('shadow')
   }
@@ -31,6 +31,7 @@ export default class IssuesComponent {
     let self = this
     this.jira.issues$.subscribe((issues) => {
       self.issues = issues
+      self.hideLoading = true
       if (!issues.length) self.hideZero = false
     })
     this.settings = ipcRenderer.sendSync('getSettings')
