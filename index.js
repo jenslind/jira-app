@@ -5,7 +5,9 @@ const Jira = require('./lib/Jira.js')
 const Auth = require('./lib/Auth.js')
 const autoUpdate = require('./lib/update.js')
 const ipc = require('electron').ipcMain
+const Menu = require('electron').Menu
 const storage = require('electron-json-storage')
+const menuTpl = require('./menu.js')
 
 const mb = menubar({
   'preload-window': true,
@@ -17,6 +19,10 @@ let jira = null
 mb.on('ready', () => {
   // Auto-update
   autoUpdate(mb.app.getVersion())
+
+  // Set application menu
+  const appMenu = Menu.buildFromTemplate(menuTpl)
+  Menu.setApplicationMenu(appMenu)
 
   // Get many issues
   ipc.on('getIssues', (event, jql) => {
