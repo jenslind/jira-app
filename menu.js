@@ -3,18 +3,6 @@ const app = require('electron').app
 
 const menuTpl = [
   {
-    label: 'Minira',
-    submenu: [
-      {
-        label: 'Quit',
-        accelerator: 'Command+Q',
-        click: function () {
-          app.quit()
-        }
-      }
-    ]
-  },
-  {
     label: 'Edit',
     submenu: [
       {
@@ -51,6 +39,13 @@ const menuTpl = [
         role: 'selectall'
       }
     ]
+  },
+  {
+    label: 'Quit',
+    accelerator: 'Command+Q',
+    click: function () {
+      app.quit()
+    }
   }
 ]
 

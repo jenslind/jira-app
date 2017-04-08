@@ -24,6 +24,11 @@ mb.on('ready', () => {
   const appMenu = Menu.buildFromTemplate(menuTpl)
   Menu.setApplicationMenu(appMenu)
 
+  // Open application menu on right click
+  mb.tray.on('right-click', function () {
+    mb.tray.popUpContextMenu(appMenu)
+  })
+
   // Get many issues
   ipc.on('getIssues', (event, jql) => {
     jira.getIssues(jql)
